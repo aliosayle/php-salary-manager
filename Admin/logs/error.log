@@ -1,0 +1,26 @@
+[2025-04-12 07:16:41] [ERROR] Client verification error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'rms.client_fingerprints' doesn't exist
+[2025-04-12 07:16:41] [SECURITY] Security event: successful_login - Data: {"user_id":"4fd93039-13b5-11f0-8549-cc28aa53b74d","email":"admin@rentalms.com"}
+[2025-04-12 07:17:58] [ERROR] Client verification error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'rms.client_fingerprints' doesn't exist
+[2025-04-12 07:24:27] [ERROR] Client verification error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'rms.client_fingerprints' doesn't exist
+[2025-04-12 07:24:27] [SECURITY] Security event: failed_login - Data: {"email":"admin@rentalms.com","attempt":1}
+[2025-04-12 08:21:41] [ERROR] Client verification error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'rms.client_fingerprints' doesn't exist
+[2025-04-12 08:21:42] [SECURITY] Security event: failed_login - Data: {"email":"admin@rentalms.com","attempt":2}
+[2025-04-12 08:23:17] [ERROR] Client verification error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'rms.client_fingerprints' doesn't exist
+[2025-04-12 08:23:18] [SECURITY] Security event: failed_login - Data: {"email":"admin@rentalms.com","attempt":3}
+[2025-04-12 08:23:29] [ERROR] Client verification error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'rms.client_fingerprints' doesn't exist
+[2025-04-12 08:23:29] [SECURITY] Security event: failed_login - Data: {"email":"admin@rentalms.com","attempt":4}
+[2025-04-12 08:24:11] [ERROR] Client verification error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'rms.client_fingerprints' doesn't exist
+[2025-04-12 08:24:12] [SECURITY] Security event: failed_login - Data: {"email":"admin@rentalms.com","attempt":5}
+[2025-04-12 08:24:20] [ERROR] Client verification error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'rms.client_fingerprints' doesn't exist
+[2025-04-12 08:24:20] [SECURITY] Security event: csrf_failure - Data: {"provided":"8521342d45ad412921db2f5f17b64234","expected":"38d9f4f43d42b1a4c91fae5a6acc5c2a"}
+[2025-04-12 08:24:26] [SECURITY] Security event: rate_limit_exceeded - Data: {"ip":"127.0.0.1"}
+[2025-04-12 08:24:59] [SECURITY] Security event: rate_limit_exceeded - Data: {"ip":"127.0.0.1"}
+[2025-04-12 08:25:19] [SECURITY] Security event: rate_limit_exceeded - Data: {"ip":"127.0.0.1"}
+[2025-04-12 08:25:47] [SECURITY] Security event: rate_limit_exceeded - Data: {"ip":"127.0.0.1"}
+[2025-04-12 08:27:56] [SECURITY] Security event: rate_limit_exceeded - Data: {"ip":"127.0.0.1"}
+[2025-04-12 08:33:30] [ERROR] Client verification error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'rms.client_fingerprints' doesn't exist
+[2025-04-12 08:33:30] [SECURITY] Security event: failed_login - Data: {"email":"admin@rentalms.com","attempt":6}
+[2025-04-12 08:33:35] [ERROR] Client verification error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'rms.client_fingerprints' doesn't exist
+[2025-04-12 08:33:35] [SECURITY] Security event: csrf_failure - Data: {"provided":"29c4d361937246d04e92852ef30b666c","expected":"d0379bbec9cb81b69f17734ee468c162"}
+[2025-04-12 08:47:57] [ERROR] Client verification error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'rms.client_fingerprints' doesn't exist
+[2025-04-12 08:47:57] [SECURITY] Security event: successful_login - Data: {"user_id":"4fd93039-13b5-11f0-8549-cc28aa53b74d","email":"admin@rentalms.com"}

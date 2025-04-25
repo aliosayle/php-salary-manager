@@ -1,0 +1,48 @@
+<?php
+/**
+ * BACKUP FILE - NOT USED
+ * 
+ * Dataset Check for Rental Management System - This functionality has been disabled
+ * This system does not use datasets
+ */
+
+// Original code preserved for reference only
+/*
+// Skip certain pages from dataset requirement
+$skip_dataset_check = [
+    'auth-login.php',
+    'auth-recoverpw.php',
+    'auth-register.php',
+    'select-dataset.php',
+    'change-dataset.php',
+    'logout.php'
+];
+
+// Get current page
+$current_page = basename($_SERVER['PHP_SELF']);
+
+// Skip check for allowed pages
+if (in_array($current_page, $skip_dataset_check)) {
+    return;
+}
+
+// If no active dataset is selected, redirect to dataset selection
+if (!isset($_SESSION['active_dataset'])) {
+    error_log("No dataset selected, redirecting user to dataset selection page. Current page: " . $current_page);
+    
+    // Store current URL to redirect back after selecting dataset
+    $_SESSION['redirect_url'] = $_SERVER['REQUEST_URI'];
+    
+    // Check if user has available datasets
+    if (isset($_SESSION['available_datasets']) && !empty($_SESSION['available_datasets'])) {
+        // Redirect to dataset selection page using relative path
+        header("Location: select-dataset.php");
+    } else {
+        // User doesn't have any datasets assigned, show error message
+        $_SESSION['error_message'] = "You don't have any datasets assigned to your account. Please contact your administrator.";
+        header("Location: index.php");
+    }
+    exit;
+}
+*/
+?> 
