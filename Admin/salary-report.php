@@ -219,9 +219,9 @@ try {
         
         // 4. Paid Leave
         $paidLeaveAmount = 0;
-        if ($manager['has_paid_leave']) {
-            // Assuming paid leave is a percentage of base salary
-            $paidLeaveAmount = $baseSalary * 0.08; // Example: 8% of base salary
+        if ($manager['has_paid_leave'] && $manager['recruitment_month'] == $selectedMonth) {
+            // Give one extra base salary as an annual paid leave bonus
+            $paidLeaveAmount = $baseSalary;
         }
         
         // 5. Years of Service Bonus (yearly/5-year/10-year)
@@ -229,17 +229,14 @@ try {
         $employmentYears = $manager['employment_years'] ?? 0;
         
         if ($employmentYears >= 1) {
-            // Default: Every year they get one base salary bonus
             if ($manager['years_bonus'] === 'ten_year') {
-                // 10th year: They get three times their base salary
-                $yearsBonus = $baseSalary * 3;
-            } else if ($manager['years_bonus'] === 'five_year') {
-                // 5th year: They get twice their base salary
+                // 10th year: They get two additional base salaries
                 $yearsBonus = $baseSalary * 2;
-            } else if ($manager['years_bonus'] === 'yearly') {
-                // Regular yearly bonus (1x base salary)
+            } else if ($manager['years_bonus'] === 'five_year') {
+                // 5th year: They get one additional base salary
                 $yearsBonus = $baseSalary;
-            }
+            } 
+            // Removed the yearly bonus since it's now handled by the paid leave
         }
         
         // 6. Deductions
@@ -529,6 +526,9 @@ $page_description = $_SESSION['lang'] == 'fr' ? 'Calcul des salaires pour les g�
                                         <button type="button" class="btn btn-success ms-2" id="exportExcelBtn">
                                             <i class="bx bx-file me-1"></i> <?php echo $_SESSION['lang'] == 'fr' ? 'Exporter Excel' : 'Export Excel'; ?>
                                         </button>
+                                        <button type="button" class="btn btn-secondary ms-2" id="helpBtn" data-bs-toggle="modal" data-bs-target="#helpModal">
+                                            <i class="bx bx-question-mark me-1"></i> <?php echo $_SESSION['lang'] == 'fr' ? 'Aide' : 'Help'; ?>
+                                        </button>
                                     </div>
                                 </div>
 
@@ -715,6 +715,318 @@ $page_description = $_SESSION['lang'] == 'fr' ? 'Calcul des salaires pour les g�
         });
     });
 </script>
+
+<!-- Help Modal -->
+<div class="modal fade" id="helpModal" tabindex="-1" aria-labelledby="helpModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="helpModalLabel">
+                    <?php echo $_SESSION['lang'] == 'fr' ? 'Explications des calculs de salaire' : 'Salary Calculation Explanations'; ?>
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="accordion" id="salaryColumnsAccordion">
+                    <!-- Base Salary -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingBaseSalary">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseBaseSalary" aria-expanded="true" aria-controls="collapseBaseSalary">
+                                <?php echo $_SESSION['lang'] == 'fr' ? 'SALAIRE DE BASE' : 'BASE SALARY'; ?>
+                            </button>
+                        </h2>
+                        <div id="collapseBaseSalary" class="accordion-collapse collapse show" aria-labelledby="headingBaseSalary" data-bs-parent="#salaryColumnsAccordion">
+                            <div class="accordion-body">
+                                <?php if ($_SESSION['lang'] == 'fr'): ?>
+                                    <p>Le salaire de base est défini pour chaque gérant dans leur profil employé. Ce montant est fixe et sert de base pour calculer d'autres composantes du salaire.</p>
+                                    <p><strong>Source :</strong> Champ <code>base_salary</code> dans la table <code>employees</code>.</p>
+                                <?php else: ?>
+                                    <p>The base salary is defined for each manager in their employee profile. This amount is fixed and serves as the foundation for calculating other salary components.</p>
+                                    <p><strong>Source:</strong> Field <code>base_salary</code> in the <code>employees</code> table.</p>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sales Bonus -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingSalesBonus">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSalesBonus" aria-expanded="false" aria-controls="collapseSalesBonus">
+                                <?php echo $_SESSION['lang'] == 'fr' ? 'PRIME/VENTE' : 'SALES BONUS'; ?>
+                            </button>
+                        </h2>
+                        <div id="collapseSalesBonus" class="accordion-collapse collapse" aria-labelledby="headingSalesBonus" data-bs-parent="#salaryColumnsAccordion">
+                            <div class="accordion-body">
+                                <?php if ($_SESSION['lang'] == 'fr'): ?>
+                                    <p>La prime de vente est calculée en fonction du montant des ventes mensuelles réalisées par le magasin du gérant. Le pourcentage appliqué dépend des paliers de vente définis dans la configuration des bonus.</p>
+                                    <p><strong>Formule :</strong> Montant des ventes mensuelles × Pourcentage de bonus applicable</p>
+                                    <p>Le pourcentage de bonus varie selon les paliers de vente, par exemple:</p>
+                                    <ul>
+                                        <?php 
+                                        if (!empty($bonusConfig)):
+                                            foreach ($bonusConfig as $tier):
+                                        ?>
+                                            <li>Pour les ventes ≥ <?php echo number_format($tier['min_sales'], 2); ?> $ : <?php echo $tier['bonus_percent']; ?>%</li>
+                                        <?php 
+                                            endforeach;
+                                        endif;
+                                        ?>
+                                    </ul>
+                                    <p><strong>Sources :</strong> 
+                                        <ul>
+                                            <li>Ventes mensuelles : Table <code>monthly_sales</code></li>
+                                            <li>Configuration des bonus : Table <code>bonus_tiers</code></li>
+                                        </ul>
+                                    </p>
+                                <?php else: ?>
+                                    <p>The sales bonus is calculated based on the monthly sales amount achieved by the manager's store. The percentage applied depends on the sales tiers defined in the bonus configuration.</p>
+                                    <p><strong>Formula:</strong> Monthly sales amount × Applicable bonus percentage</p>
+                                    <p>The bonus percentage varies according to sales tiers, for example:</p>
+                                    <ul>
+                                        <?php 
+                                        if (!empty($bonusConfig)):
+                                            foreach ($bonusConfig as $tier):
+                                        ?>
+                                            <li>For sales ≥ $<?php echo number_format($tier['min_sales'], 2); ?>: <?php echo $tier['bonus_percent']; ?>%</li>
+                                        <?php 
+                                            endforeach;
+                                        endif;
+                                        ?>
+                                    </ul>
+                                    <p><strong>Sources:</strong> 
+                                        <ul>
+                                            <li>Monthly sales: <code>monthly_sales</code> table</li>
+                                            <li>Bonus configuration: <code>bonus_tiers</code> table</li>
+                                        </ul>
+                                    </p>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Evaluation Bonus -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingEvalBonus">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEvalBonus" aria-expanded="false" aria-controls="collapseEvalBonus">
+                                <?php echo $_SESSION['lang'] == 'fr' ? 'PRIME/NOTE' : 'EVALUATION BONUS'; ?>
+                            </button>
+                        </h2>
+                        <div id="collapseEvalBonus" class="accordion-collapse collapse" aria-labelledby="headingEvalBonus" data-bs-parent="#salaryColumnsAccordion">
+                            <div class="accordion-body">
+                                <?php if ($_SESSION['lang'] == 'fr'): ?>
+                                    <p>La prime d'évaluation est basée sur le score total obtenu par le gérant lors de son évaluation mensuelle. Les scores sont classés par plages, chaque plage correspondant à un montant de prime différent.</p>
+                                    <p><strong>Processus :</strong></p>
+                                    <ol>
+                                        <li>Le gérant est évalué sur plusieurs critères qui donnent un score total</li>
+                                        <li>Ce score total est comparé aux plages définies dans la table <code>total_ranges</code></li>
+                                        <li>Le montant correspondant à la plage est attribué comme prime d'évaluation</li>
+                                    </ol>
+                                    <p><strong>Sources :</strong>
+                                        <ul>
+                                            <li>Score d'évaluation : Table <code>employee_evaluations</code></li>
+                                            <li>Plages et montants : Table <code>total_ranges</code></li>
+                                        </ul>
+                                    </p>
+                                <?php else: ?>
+                                    <p>The evaluation bonus is based on the total score obtained by the manager during their monthly evaluation. Scores are classified by ranges, with each range corresponding to a different bonus amount.</p>
+                                    <p><strong>Process:</strong></p>
+                                    <ol>
+                                        <li>The manager is evaluated on multiple criteria that result in a total score</li>
+                                        <li>This total score is compared to the ranges defined in the <code>total_ranges</code> table</li>
+                                        <li>The amount corresponding to the matching range is awarded as the evaluation bonus</li>
+                                    </ol>
+                                    <p><strong>Sources:</strong>
+                                        <ul>
+                                            <li>Evaluation score: <code>employee_evaluations</code> table</li>
+                                            <li>Ranges and amounts: <code>total_ranges</code> table</li>
+                                        </ul>
+                                    </p>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Paid Leave -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingPaidLeave">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePaidLeave" aria-expanded="false" aria-controls="collapsePaidLeave">
+                                <?php echo $_SESSION['lang'] == 'fr' ? 'CONGÉ PAYÉ' : 'PAID LEAVE'; ?>
+                            </button>
+                        </h2>
+                        <div id="collapsePaidLeave" class="accordion-collapse collapse" aria-labelledby="headingPaidLeave" data-bs-parent="#salaryColumnsAccordion">
+                            <div class="accordion-body">
+                                <?php if ($_SESSION['lang'] == 'fr'): ?>
+                                    <p>Le congé payé correspond à un salaire de base supplémentaire accordé chaque année au mois d'embauche du gérant, si celui-ci a au moins 12 mois d'ancienneté dans l'entreprise.</p>
+                                    <p><strong>Formule :</strong> Salaire de base (si le gérant a au moins 12 mois d'ancienneté et le mois sélectionné correspond au mois de recrutement)</p>
+                                    <p><strong>Source :</strong> Calculé en fonction de la <code>recruitment_date</code> dans la table <code>employees</code>.</p>
+                                <?php else: ?>
+                                    <p>Paid leave corresponds to one additional base salary granted each year in the manager's hiring month, if they have at least 12 months of seniority in the company.</p>
+                                    <p><strong>Formula:</strong> Base salary (if the manager has at least 12 months of seniority and the selected month matches their recruitment month)</p>
+                                    <p><strong>Source:</strong> Calculated based on the <code>recruitment_date</code> in the <code>employees</code> table.</p>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 5/10 Years Bonus -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingYearBonus">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseYearBonus" aria-expanded="false" aria-controls="collapseYearBonus">
+                                <?php echo $_SESSION['lang'] == 'fr' ? 'PRIME 05/10 ANS' : '5/10 YEAR BONUS'; ?>
+                            </button>
+                        </h2>
+                        <div id="collapseYearBonus" class="accordion-collapse collapse" aria-labelledby="headingYearBonus" data-bs-parent="#salaryColumnsAccordion">
+                            <div class="accordion-body">
+                                <?php if ($_SESSION['lang'] == 'fr'): ?>
+                                    <p>Cette prime est attribuée lors des anniversaires importants d'embauche du gérant :</p>
+                                    <ul>
+                                        <li><strong>5 ans de service :</strong> 1 salaire de base supplémentaire</li>
+                                        <li><strong>10 ans de service :</strong> 2 salaires de base supplémentaires</li>
+                                    </ul>
+                                    <p>Cette prime n'est attribuée que si le mois et l'année actuels correspondent exactement à l'anniversaire des 5 ou 10 ans d'embauche du gérant.</p>
+                                    <p><strong>Source :</strong> Calculé en fonction de la <code>recruitment_date</code> dans la table <code>employees</code>.</p>
+                                <?php else: ?>
+                                    <p>This bonus is awarded on the manager's significant hiring anniversaries:</p>
+                                    <ul>
+                                        <li><strong>5 years of service:</strong> 1 additional base salary</li>
+                                        <li><strong>10 years of service:</strong> 2 additional base salaries</li>
+                                    </ul>
+                                    <p>This bonus is only awarded if the current month and year exactly match the manager's 5th or 10th hiring anniversary.</p>
+                                    <p><strong>Source:</strong> Calculated based on the <code>recruitment_date</code> in the <code>employees</code> table.</p>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Inventory Shortage -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingInventoryShortage">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInventoryShortage" aria-expanded="false" aria-controls="collapseInventoryShortage">
+                                <?php echo $_SESSION['lang'] == 'fr' ? 'MANQUANT INVENTAIRE' : 'INVENTORY SHORTAGE'; ?>
+                            </button>
+                        </h2>
+                        <div id="collapseInventoryShortage" class="accordion-collapse collapse" aria-labelledby="headingInventoryShortage" data-bs-parent="#salaryColumnsAccordion">
+                            <div class="accordion-body">
+                                <?php if ($_SESSION['lang'] == 'fr'): ?>
+                                    <p>Les manquants d'inventaire représentent la valeur des pertes ou écarts d'inventaire qui sont déduits du salaire du gérant. Ces montants sont enregistrés dans la table des dettes des gérants.</p>
+                                    <p><strong>Source :</strong> Somme des champs <code>inventory_month</code> dans la table <code>manager_debts</code> pour le gérant pour le mois et l'année sélectionnés.</p>
+                                <?php else: ?>
+                                    <p>Inventory shortages represent the value of inventory losses or discrepancies that are deducted from the manager's salary. These amounts are recorded in the manager debts table.</p>
+                                    <p><strong>Source:</strong> Sum of <code>inventory_month</code> fields in the <code>manager_debts</code> table for the manager for the selected month and year.</p>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Salary Advance -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingSalaryAdvance">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSalaryAdvance" aria-expanded="false" aria-controls="collapseSalaryAdvance">
+                                <?php echo $_SESSION['lang'] == 'fr' ? 'AVANCE SUR SALAIRE' : 'SALARY ADVANCE'; ?>
+                            </button>
+                        </h2>
+                        <div id="collapseSalaryAdvance" class="accordion-collapse collapse" aria-labelledby="headingSalaryAdvance" data-bs-parent="#salaryColumnsAccordion">
+                            <div class="accordion-body">
+                                <?php if ($_SESSION['lang'] == 'fr'): ?>
+                                    <p>Les avances sur salaire sont des montants déjà versés au gérant qui sont déduits du salaire final. Ces avances sont enregistrées dans la table des dettes des gérants.</p>
+                                    <p><strong>Source :</strong> Somme des champs <code>salary_advance</code> dans la table <code>manager_debts</code> pour le gérant pour le mois et l'année sélectionnés.</p>
+                                <?php else: ?>
+                                    <p>Salary advances are amounts already paid to the manager that are deducted from the final salary. These advances are recorded in the manager debts table.</p>
+                                    <p><strong>Source:</strong> Sum of <code>salary_advance</code> fields in the <code>manager_debts</code> table for the manager for the selected month and year.</p>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sanctions -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingSanctions">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSanctions" aria-expanded="false" aria-controls="collapseSanctions">
+                                <?php echo $_SESSION['lang'] == 'fr' ? 'SANCTION' : 'SANCTION'; ?>
+                            </button>
+                        </h2>
+                        <div id="collapseSanctions" class="accordion-collapse collapse" aria-labelledby="headingSanctions" data-bs-parent="#salaryColumnsAccordion">
+                            <div class="accordion-body">
+                                <?php if ($_SESSION['lang'] == 'fr'): ?>
+                                    <p>Les sanctions représentent des montants déduits du salaire en raison de problèmes disciplinaires ou de non-respect des politiques de l'entreprise.</p>
+                                    <p><strong>Source :</strong> Somme des champs <code>sanction</code> dans la table <code>manager_debts</code> pour le gérant pour le mois et l'année sélectionnés.</p>
+                                <?php else: ?>
+                                    <p>Sanctions represent amounts deducted from the salary due to disciplinary issues or non-compliance with company policies.</p>
+                                    <p><strong>Source:</strong> Sum of <code>sanction</code> fields in the <code>manager_debts</code> table for the manager for the selected month and year.</p>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Register Difference -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingRegisterDiff">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseRegisterDiff" aria-expanded="false" aria-controls="collapseRegisterDiff">
+                                <?php echo $_SESSION['lang'] == 'fr' ? 'ECART CAISSE' : 'REGISTER DIFFERENCE'; ?>
+                            </button>
+                        </h2>
+                        <div id="collapseRegisterDiff" class="accordion-collapse collapse" aria-labelledby="headingRegisterDiff" data-bs-parent="#salaryColumnsAccordion">
+                            <div class="accordion-body">
+                                <?php if ($_SESSION['lang'] == 'fr'): ?>
+                                    <p>Les écarts de caisse représentent les différences entre les montants enregistrés dans le système et les montants réellement présents dans la caisse. Ces écarts sont déduits du salaire du gérant.</p>
+                                    <p><strong>Source :</strong> Somme des champs <code>cash_discrepancy</code> dans la table <code>manager_debts</code> pour le gérant pour le mois et l'année sélectionnés.</p>
+                                <?php else: ?>
+                                    <p>Register differences represent the discrepancies between amounts recorded in the system and amounts actually present in the cash register. These differences are deducted from the manager's salary.</p>
+                                    <p><strong>Source:</strong> Sum of <code>cash_discrepancy</code> fields in the <code>manager_debts</code> table for the manager for the selected month and year.</p>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Net Salary -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingNetSalary">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNetSalary" aria-expanded="false" aria-controls="collapseNetSalary">
+                                <?php echo $_SESSION['lang'] == 'fr' ? 'NET A PAYER' : 'NET SALARY'; ?>
+                            </button>
+                        </h2>
+                        <div id="collapseNetSalary" class="accordion-collapse collapse" aria-labelledby="headingNetSalary" data-bs-parent="#salaryColumnsAccordion">
+                            <div class="accordion-body">
+                                <?php if ($_SESSION['lang'] == 'fr'): ?>
+                                    <p>Le montant net à payer représente le salaire final du gérant après avoir additionné toutes les primes et soustrait toutes les déductions.</p>
+                                    <p><strong>Formule :</strong></p>
+                                    <pre>Salaire de base 
++ Prime de vente 
++ Prime d'évaluation 
++ Congé payé 
++ Prime d'années de service 
+- Manquant d'inventaire 
+- Avance sur salaire 
+- Sanctions 
+- Écart de caisse
+= Net à payer</pre>
+                                <?php else: ?>
+                                    <p>The net salary represents the manager's final pay after adding all bonuses and subtracting all deductions.</p>
+                                    <p><strong>Formula:</strong></p>
+                                    <pre>Base salary 
++ Sales bonus 
++ Evaluation bonus 
++ Paid leave 
++ Years of service bonus 
+- Inventory shortage 
+- Salary advance 
+- Sanctions 
+- Register difference
+= Net salary</pre>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                    <?php echo $_SESSION['lang'] == 'fr' ? 'Fermer' : 'Close'; ?>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>

@@ -161,9 +161,9 @@ try {
         
         // 3. Paid Leave
         $paidLeaveAmount = 0;
-        if ($assistantManager['has_paid_leave']) {
-            // Assuming paid leave is a percentage of base salary
-            $paidLeaveAmount = $baseSalary * 0.08; // Example: 8% of base salary
+        if ($assistantManager['has_paid_leave'] && $assistantManager['recruitment_month'] == $selectedMonth) {
+            // Give one extra base salary as an annual paid leave bonus
+            $paidLeaveAmount = $baseSalary;
         }
         
         // 4. Years of Service Bonus (5-year/10-year)
@@ -171,12 +171,11 @@ try {
         $employmentYears = $assistantManager['employment_years'] ?? 0;
         
         if ($employmentYears >= 1) {
-            // Default: No yearly bonus for assistant managers, only 5/10 year milestones
             if ($assistantManager['years_bonus'] === 'ten_year') {
-                // 10th year: They get two times their base salary
+                // 10th year: They get two additional base salaries
                 $yearsBonus = $baseSalary * 2;
             } else if ($assistantManager['years_bonus'] === 'five_year') {
-                // 5th year: They get one times their base salary
+                // 5th year: They get one additional base salary
                 $yearsBonus = $baseSalary;
             }
         }
@@ -474,6 +473,9 @@ $page_description = $_SESSION['lang'] == 'fr' ? 'Calcul des salaires pour les ai
                                         <button type="button" class="btn btn-success ms-2" id="exportExcelBtn">
                                             <i class="bx bx-file me-1"></i> <?php echo $_SESSION['lang'] == 'fr' ? 'Exporter Excel' : 'Export Excel'; ?>
                                         </button>
+                                        <button type="button" class="btn btn-secondary ms-2" id="helpBtn" data-bs-toggle="modal" data-bs-target="#helpModal">
+                                            <i class="bx bx-question-mark me-1"></i> <?php echo $_SESSION['lang'] == 'fr' ? 'Aide' : 'Help'; ?>
+                                        </button>
                                     </div>
                                 </div>
 
@@ -654,6 +656,208 @@ $page_description = $_SESSION['lang'] == 'fr' ? 'Calcul des salaires pour les ai
         });
     });
 </script>
+
+<!-- Help Modal -->
+<div class="modal fade" id="helpModal" tabindex="-1" aria-labelledby="helpModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="helpModalLabel">
+                    <?php echo $_SESSION['lang'] == 'fr' ? 'Explications des calculs de salaire' : 'Salary Calculation Explanations'; ?>
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="accordion" id="salaryColumnsAccordion">
+                    <!-- Base Salary -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingBaseSalary">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseBaseSalary" aria-expanded="true" aria-controls="collapseBaseSalary">
+                                <?php echo $_SESSION['lang'] == 'fr' ? 'SALAIRE DE BASE' : 'BASE SALARY'; ?>
+                            </button>
+                        </h2>
+                        <div id="collapseBaseSalary" class="accordion-collapse collapse show" aria-labelledby="headingBaseSalary" data-bs-parent="#salaryColumnsAccordion">
+                            <div class="accordion-body">
+                                <?php if ($_SESSION['lang'] == 'fr'): ?>
+                                    <p>Le salaire de base est défini pour chaque aide gérant dans leur profil employé. Ce montant est fixe et sert de base pour calculer d'autres composantes du salaire.</p>
+                                    <p><strong>Source :</strong> Champ <code>base_salary</code> dans la table <code>employees</code>.</p>
+                                <?php else: ?>
+                                    <p>The base salary is defined for each assistant manager in their employee profile. This amount is fixed and serves as the foundation for calculating other salary components.</p>
+                                    <p><strong>Source:</strong> Field <code>base_salary</code> in the <code>employees</code> table.</p>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Evaluation Bonus -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingEvalBonus">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEvalBonus" aria-expanded="false" aria-controls="collapseEvalBonus">
+                                <?php echo $_SESSION['lang'] == 'fr' ? 'PRIME/NOTE' : 'EVALUATION BONUS'; ?>
+                            </button>
+                        </h2>
+                        <div id="collapseEvalBonus" class="accordion-collapse collapse" aria-labelledby="headingEvalBonus" data-bs-parent="#salaryColumnsAccordion">
+                            <div class="accordion-body">
+                                <?php if ($_SESSION['lang'] == 'fr'): ?>
+                                    <p>La prime d'évaluation est basée sur la note attribuée à l'aide gérant pour le mois en cours. Les notes possibles sont A+, A, B, C et D, chacune correspondant à un montant de prime différent.</p>
+                                    <ul>
+                                        <li><strong>A+ :</strong> 500,00 $</li>
+                                        <li><strong>A :</strong> 400,00 $</li>
+                                        <li><strong>B :</strong> 300,00 $</li>
+                                        <li><strong>C :</strong> 200,00 $</li>
+                                        <li><strong>D :</strong> 100,00 $</li>
+                                    </ul>
+                                    <p><strong>Source :</strong> Champ <code>prime_amount</code> dans la table <code>assistant_managers_evaluations</code> pour le mois et l'année sélectionnés.</p>
+                                <?php else: ?>
+                                    <p>The evaluation bonus is based on the grade assigned to the assistant manager for the current month. Possible grades are A+, A, B, C, and D, each corresponding to a different bonus amount.</p>
+                                    <ul>
+                                        <li><strong>A+:</strong> $500.00</li>
+                                        <li><strong>A:</strong> $400.00</li>
+                                        <li><strong>B:</strong> $300.00</li>
+                                        <li><strong>C:</strong> $200.00</li>
+                                        <li><strong>D:</strong> $100.00</li>
+                                    </ul>
+                                    <p><strong>Source:</strong> Field <code>prime_amount</code> in the <code>assistant_managers_evaluations</code> table for the selected month and year.</p>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Paid Leave -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingPaidLeave">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePaidLeave" aria-expanded="false" aria-controls="collapsePaidLeave">
+                                <?php echo $_SESSION['lang'] == 'fr' ? 'CONGÉ PAYÉ' : 'PAID LEAVE'; ?>
+                            </button>
+                        </h2>
+                        <div id="collapsePaidLeave" class="accordion-collapse collapse" aria-labelledby="headingPaidLeave" data-bs-parent="#salaryColumnsAccordion">
+                            <div class="accordion-body">
+                                <?php if ($_SESSION['lang'] == 'fr'): ?>
+                                    <p>Le congé payé correspond à un salaire de base supplémentaire accordé chaque année au mois d'embauche de l'aide gérant, si celui-ci a au moins 12 mois d'ancienneté dans l'entreprise.</p>
+                                    <p><strong>Formule :</strong> Salaire de base (si l'aide gérant a au moins 12 mois d'ancienneté et le mois sélectionné correspond au mois de recrutement)</p>
+                                    <p><strong>Source :</strong> Calculé en fonction de la <code>recruitment_date</code> dans la table <code>employees</code>.</p>
+                                <?php else: ?>
+                                    <p>Paid leave corresponds to one additional base salary granted each year in the assistant manager's hiring month, if they have at least 12 months of seniority in the company.</p>
+                                    <p><strong>Formula:</strong> Base salary (if the assistant manager has at least 12 months of seniority and the selected month matches their recruitment month)</p>
+                                    <p><strong>Source:</strong> Calculated based on the <code>recruitment_date</code> in the <code>employees</code> table.</p>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 5/10 Years Bonus -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingYearBonus">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseYearBonus" aria-expanded="false" aria-controls="collapseYearBonus">
+                                <?php echo $_SESSION['lang'] == 'fr' ? 'PRIME 05/10 ANS' : '5/10 YEAR BONUS'; ?>
+                            </button>
+                        </h2>
+                        <div id="collapseYearBonus" class="accordion-collapse collapse" aria-labelledby="headingYearBonus" data-bs-parent="#salaryColumnsAccordion">
+                            <div class="accordion-body">
+                                <?php if ($_SESSION['lang'] == 'fr'): ?>
+                                    <p>Cette prime est attribuée uniquement lors des anniversaires marquants de service :</p>
+                                    <ul>
+                                        <li><strong>5 ans de service :</strong> 1 salaire de base supplémentaire</li>
+                                        <li><strong>10 ans de service :</strong> 2 salaires de base supplémentaires</li>
+                                    </ul>
+                                    <p>Cette prime n'est attribuée que si le mois et l'année actuels correspondent exactement à l'anniversaire des 5 ou 10 ans d'embauche de l'aide gérant.</p>
+                                    <p><strong>Source :</strong> Calculé en fonction de la <code>recruitment_date</code> dans la table <code>employees</code>.</p>
+                                <?php else: ?>
+                                    <p>This bonus is awarded only on significant service anniversaries:</p>
+                                    <ul>
+                                        <li><strong>5 years of service:</strong> 1 additional base salary</li>
+                                        <li><strong>10 years of service:</strong> 2 additional base salaries</li>
+                                    </ul>
+                                    <p>This bonus is only awarded if the current month and year exactly match the assistant manager's 5th or 10th hiring anniversary.</p>
+                                    <p><strong>Source:</strong> Calculated based on the <code>recruitment_date</code> in the <code>employees</code> table.</p>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Salary Advance -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingSalaryAdvance">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSalaryAdvance" aria-expanded="false" aria-controls="collapseSalaryAdvance">
+                                <?php echo $_SESSION['lang'] == 'fr' ? 'AVANCE SUR SALAIRE' : 'SALARY ADVANCE'; ?>
+                            </button>
+                        </h2>
+                        <div id="collapseSalaryAdvance" class="accordion-collapse collapse" aria-labelledby="headingSalaryAdvance" data-bs-parent="#salaryColumnsAccordion">
+                            <div class="accordion-body">
+                                <?php if ($_SESSION['lang'] == 'fr'): ?>
+                                    <p>Les avances sur salaire sont des montants déjà versés à l'aide gérant qui sont déduits du salaire final. Ces avances sont enregistrées dans la table des dettes des gérants.</p>
+                                    <p><strong>Source :</strong> Somme des champs <code>salary_advance</code> dans la table <code>manager_debts</code> pour l'aide gérant pour le mois et l'année sélectionnés.</p>
+                                <?php else: ?>
+                                    <p>Salary advances are amounts already paid to the assistant manager that are deducted from the final salary. These advances are recorded in the manager debts table.</p>
+                                    <p><strong>Source:</strong> Sum of <code>salary_advance</code> fields in the <code>manager_debts</code> table for the assistant manager for the selected month and year.</p>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sanctions -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingSanctions">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSanctions" aria-expanded="false" aria-controls="collapseSanctions">
+                                <?php echo $_SESSION['lang'] == 'fr' ? 'SANCTION' : 'SANCTION'; ?>
+                            </button>
+                        </h2>
+                        <div id="collapseSanctions" class="accordion-collapse collapse" aria-labelledby="headingSanctions" data-bs-parent="#salaryColumnsAccordion">
+                            <div class="accordion-body">
+                                <?php if ($_SESSION['lang'] == 'fr'): ?>
+                                    <p>Les sanctions représentent des montants déduits du salaire en raison de problèmes disciplinaires ou de non-respect des politiques de l'entreprise.</p>
+                                    <p><strong>Source :</strong> Somme des champs <code>sanction</code> dans la table <code>manager_debts</code> pour l'aide gérant pour le mois et l'année sélectionnés.</p>
+                                <?php else: ?>
+                                    <p>Sanctions represent amounts deducted from the salary due to disciplinary issues or non-compliance with company policies.</p>
+                                    <p><strong>Source:</strong> Sum of <code>sanction</code> fields in the <code>manager_debts</code> table for the assistant manager for the selected month and year.</p>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Total Salary -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingTotal">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTotal" aria-expanded="false" aria-controls="collapseTotal">
+                                <?php echo $_SESSION['lang'] == 'fr' ? 'TOTAL' : 'TOTAL'; ?>
+                            </button>
+                        </h2>
+                        <div id="collapseTotal" class="accordion-collapse collapse" aria-labelledby="headingTotal" data-bs-parent="#salaryColumnsAccordion">
+                            <div class="accordion-body">
+                                <?php if ($_SESSION['lang'] == 'fr'): ?>
+                                    <p>Le total représente le montant net à payer à l'aide gérant après avoir additionné toutes les primes et soustrait toutes les déductions.</p>
+                                    <p><strong>Formule :</strong></p>
+                                    <pre>Salaire de base 
++ Prime d'évaluation 
++ Congé payé 
++ Prime d'années de service 
+- Avance sur salaire 
+- Sanctions
+= Salaire Total</pre>
+                                <?php else: ?>
+                                    <p>The total represents the net amount to be paid to the assistant manager after adding all bonuses and subtracting all deductions.</p>
+                                    <p><strong>Formula:</strong></p>
+                                    <pre>Base salary 
++ Evaluation bonus 
++ Paid leave 
++ Years of service bonus 
+- Salary advance 
+- Sanctions
+= Total Salary</pre>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                    <?php echo $_SESSION['lang'] == 'fr' ? 'Fermer' : 'Close'; ?>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>

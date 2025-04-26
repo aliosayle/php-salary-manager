@@ -86162,3 +86162,1124 @@ Stack trace:
 )
 
 [25-Apr-2025 12:32:30 UTC] Session valid for user: admin
+[26-Apr-2025 07:01:16 UTC] Session check started. URI: /salarymanager/Admin/assistant-manager-salary-report.php
+[26-Apr-2025 07:01:16 UTC] Session data: Array
+(
+    [lang] => fr
+    [loggedin] => 1
+    [user_id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [name] => admin
+    [username] => admin
+    [email] => admin@example.com
+    [role_id] => 7119b17b-1aa6-11f0-99a1-cc28aa53b74d
+    [last_activity] => 1745569146
+    [permissions] => Array
+        (
+            [0] => view_dashboard
+            [1] => manage_users
+            [2] => manage_roles
+            [3] => view_employees
+            [4] => manage_employees
+            [5] => view_education
+            [6] => manage_education
+            [7] => view_posts
+            [8] => manage_posts
+            [9] => generate_reports
+        )
+
+)
+
+[26-Apr-2025 07:01:16 UTC] Session valid for user: admin
+[26-Apr-2025 07:01:26 UTC] Session check started. URI: /salarymanager/Admin/assistant-manager-salary-report.php
+[26-Apr-2025 07:01:26 UTC] Session data: Array
+(
+    [lang] => en
+    [loggedin] => 1
+    [user_id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [name] => admin
+    [username] => admin
+    [email] => admin@example.com
+    [role_id] => 7119b17b-1aa6-11f0-99a1-cc28aa53b74d
+    [last_activity] => 1745569146
+    [permissions] => Array
+        (
+            [0] => view_dashboard
+            [1] => manage_users
+            [2] => manage_roles
+            [3] => view_employees
+            [4] => manage_employees
+            [5] => view_education
+            [6] => manage_education
+            [7] => view_posts
+            [8] => manage_posts
+            [9] => generate_reports
+        )
+
+)
+
+[26-Apr-2025 07:01:26 UTC] Session valid for user: admin
+[26-Apr-2025 07:01:35 UTC] Session check started. URI: /salarymanager/Admin/assistant-manager-salary-report.php
+[26-Apr-2025 07:01:35 UTC] Session data: Array
+(
+    [lang] => fr
+    [loggedin] => 1
+    [user_id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [name] => admin
+    [username] => admin
+    [email] => admin@example.com
+    [role_id] => 7119b17b-1aa6-11f0-99a1-cc28aa53b74d
+    [last_activity] => 1745569146
+    [permissions] => Array
+        (
+            [0] => view_dashboard
+            [1] => manage_users
+            [2] => manage_roles
+            [3] => view_employees
+            [4] => manage_employees
+            [5] => view_education
+            [6] => manage_education
+            [7] => view_posts
+            [8] => manage_posts
+            [9] => generate_reports
+        )
+
+)
+
+[26-Apr-2025 07:01:35 UTC] Session valid for user: admin
+[26-Apr-2025 08:13:09 UTC] Session check started. URI: /salarymanager/Admin/salary-report.php
+[26-Apr-2025 08:13:09 UTC] Session data: Array
+(
+    [lang] => fr
+    [loggedin] => 1
+    [user_id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [name] => admin
+    [username] => admin
+    [email] => admin@example.com
+    [role_id] => 7119b17b-1aa6-11f0-99a1-cc28aa53b74d
+    [last_activity] => 1745569146
+    [permissions] => Array
+        (
+            [0] => view_dashboard
+            [1] => manage_users
+            [2] => manage_roles
+            [3] => view_employees
+            [4] => manage_employees
+            [5] => view_education
+            [6] => manage_education
+            [7] => view_posts
+            [8] => manage_posts
+            [9] => generate_reports
+        )
+
+)
+
+[26-Apr-2025 08:13:09 UTC] Session valid for user: admin
+[26-Apr-2025 08:13:18 UTC] Session check started. URI: /salarymanager/Admin/employee-evaluations.php
+[26-Apr-2025 08:13:18 UTC] Session data: Array
+(
+    [lang] => fr
+    [loggedin] => 1
+    [user_id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [name] => admin
+    [username] => admin
+    [email] => admin@example.com
+    [role_id] => 7119b17b-1aa6-11f0-99a1-cc28aa53b74d
+    [last_activity] => 1745569146
+    [permissions] => Array
+        (
+            [0] => view_dashboard
+            [1] => manage_users
+            [2] => manage_roles
+            [3] => view_employees
+            [4] => manage_employees
+            [5] => view_education
+            [6] => manage_education
+            [7] => view_posts
+            [8] => manage_posts
+            [9] => generate_reports
+        )
+
+)
+
+[26-Apr-2025 08:13:18 UTC] Session valid for user: admin
+[26-Apr-2025 08:13:25 UTC] Session check started. URI: /salarymanager/Admin/ajax-handlers/get-evaluation.php?id=cce4cde6-21b4-11f0-99a1-cc28aa53b74d
+[26-Apr-2025 08:13:25 UTC] Session data: Array
+(
+    [lang] => fr
+    [loggedin] => 1
+    [user_id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [name] => admin
+    [username] => admin
+    [email] => admin@example.com
+    [role_id] => 7119b17b-1aa6-11f0-99a1-cc28aa53b74d
+    [last_activity] => 1745569146
+    [permissions] => Array
+        (
+            [0] => view_dashboard
+            [1] => manage_users
+            [2] => manage_roles
+            [3] => view_employees
+            [4] => manage_employees
+            [5] => view_education
+            [6] => manage_education
+            [7] => view_posts
+            [8] => manage_posts
+            [9] => generate_reports
+        )
+
+)
+
+[26-Apr-2025 08:13:25 UTC] Session valid for user: admin
+[26-Apr-2025 08:14:00 UTC] Session check started. URI: /salarymanager/Admin/salary-report.php
+[26-Apr-2025 08:14:00 UTC] Session data: Array
+(
+    [lang] => fr
+    [loggedin] => 1
+    [user_id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [name] => admin
+    [username] => admin
+    [email] => admin@example.com
+    [role_id] => 7119b17b-1aa6-11f0-99a1-cc28aa53b74d
+    [last_activity] => 1745569146
+    [permissions] => Array
+        (
+            [0] => view_dashboard
+            [1] => manage_users
+            [2] => manage_roles
+            [3] => view_employees
+            [4] => manage_employees
+            [5] => view_education
+            [6] => manage_education
+            [7] => view_posts
+            [8] => manage_posts
+            [9] => generate_reports
+        )
+
+)
+
+[26-Apr-2025 08:14:00 UTC] Session valid for user: admin
+[26-Apr-2025 08:21:13 UTC] Session check started. URI: /salarymanager/Admin/salary-report.php
+[26-Apr-2025 08:21:13 UTC] Session data: Array
+(
+    [lang] => fr
+    [loggedin] => 1
+    [user_id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [name] => admin
+    [username] => admin
+    [email] => admin@example.com
+    [role_id] => 7119b17b-1aa6-11f0-99a1-cc28aa53b74d
+    [last_activity] => 1745569146
+    [permissions] => Array
+        (
+            [0] => view_dashboard
+            [1] => manage_users
+            [2] => manage_roles
+            [3] => view_employees
+            [4] => manage_employees
+            [5] => view_education
+            [6] => manage_education
+            [7] => view_posts
+            [8] => manage_posts
+            [9] => generate_reports
+        )
+
+)
+
+[26-Apr-2025 08:21:13 UTC] Session valid for user: admin
+[26-Apr-2025 08:23:44 UTC] Session check started. URI: /salarymanager/Admin/salary-report.php
+[26-Apr-2025 08:23:44 UTC] Session data: Array
+(
+    [lang] => fr
+    [loggedin] => 1
+    [user_id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [name] => admin
+    [username] => admin
+    [email] => admin@example.com
+    [role_id] => 7119b17b-1aa6-11f0-99a1-cc28aa53b74d
+    [last_activity] => 1745569146
+    [permissions] => Array
+        (
+            [0] => view_dashboard
+            [1] => manage_users
+            [2] => manage_roles
+            [3] => view_employees
+            [4] => manage_employees
+            [5] => view_education
+            [6] => manage_education
+            [7] => view_posts
+            [8] => manage_posts
+            [9] => generate_reports
+        )
+
+)
+
+[26-Apr-2025 08:23:44 UTC] Session valid for user: admin
+[26-Apr-2025 08:23:44 UTC] PHP Warning:  Undefined variable $valuationBonus in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 258
+[26-Apr-2025 08:23:44 UTC] PHP Warning:  Undefined variable $valuationBonus in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 258
+[26-Apr-2025 08:23:44 UTC] PHP Warning:  Undefined variable $valuationBonus in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 258
+[26-Apr-2025 08:23:44 UTC] PHP Warning:  Undefined variable $valuationBonus in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 258
+[26-Apr-2025 08:23:44 UTC] PHP Warning:  Undefined variable $valuationBonus in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 258
+[26-Apr-2025 08:23:44 UTC] PHP Warning:  Undefined variable $valuationBonus in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 258
+[26-Apr-2025 08:23:44 UTC] PHP Warning:  Undefined variable $valuationBonus in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 258
+[26-Apr-2025 08:23:44 UTC] PHP Warning:  Undefined variable $valuationBonus in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 258
+[26-Apr-2025 08:23:44 UTC] PHP Warning:  Undefined variable $valuationBonus in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 258
+[26-Apr-2025 08:23:44 UTC] PHP Warning:  Undefined variable $valuationBonus in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 258
+[26-Apr-2025 08:23:44 UTC] PHP Warning:  Undefined variable $valuationBonus in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 258
+[26-Apr-2025 08:23:44 UTC] PHP Warning:  Undefined variable $valuationBonus in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 258
+[26-Apr-2025 08:23:44 UTC] PHP Warning:  Undefined variable $valuationBonus in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 258
+[26-Apr-2025 08:23:44 UTC] PHP Warning:  Undefined variable $valuationBonus in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 258
+[26-Apr-2025 08:23:44 UTC] PHP Warning:  Undefined variable $valuationBonus in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 258
+[26-Apr-2025 08:23:44 UTC] PHP Warning:  Undefined variable $valuationBonus in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 258
+[26-Apr-2025 08:23:44 UTC] PHP Warning:  Undefined variable $valuationBonus in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 258
+[26-Apr-2025 08:23:44 UTC] PHP Warning:  Undefined variable $valuationBonus in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 258
+[26-Apr-2025 08:23:44 UTC] PHP Warning:  Undefined variable $valuationBonus in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 258
+[26-Apr-2025 08:23:44 UTC] PHP Warning:  Undefined variable $valuationBonus in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 258
+[26-Apr-2025 08:23:44 UTC] PHP Warning:  Undefined variable $valuationBonus in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 258
+[26-Apr-2025 08:23:44 UTC] PHP Warning:  Undefined variable $valuationBonus in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 258
+[26-Apr-2025 08:23:44 UTC] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 571
+[26-Apr-2025 08:23:44 UTC] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 571
+[26-Apr-2025 08:23:44 UTC] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 571
+[26-Apr-2025 08:23:44 UTC] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 571
+[26-Apr-2025 08:23:44 UTC] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 571
+[26-Apr-2025 08:23:44 UTC] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 571
+[26-Apr-2025 08:23:44 UTC] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 571
+[26-Apr-2025 08:23:44 UTC] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 571
+[26-Apr-2025 08:23:44 UTC] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 571
+[26-Apr-2025 08:23:44 UTC] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 571
+[26-Apr-2025 08:23:44 UTC] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 571
+[26-Apr-2025 08:23:44 UTC] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 571
+[26-Apr-2025 08:23:44 UTC] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 571
+[26-Apr-2025 08:23:44 UTC] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 571
+[26-Apr-2025 08:23:44 UTC] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 571
+[26-Apr-2025 08:23:44 UTC] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 571
+[26-Apr-2025 08:23:44 UTC] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 571
+[26-Apr-2025 08:23:44 UTC] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 571
+[26-Apr-2025 08:23:44 UTC] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 571
+[26-Apr-2025 08:23:44 UTC] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 571
+[26-Apr-2025 08:23:44 UTC] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 571
+[26-Apr-2025 08:23:44 UTC] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 571
+[26-Apr-2025 08:24:07 UTC] Session check started. URI: /salarymanager/Admin/salary-report.php
+[26-Apr-2025 08:24:07 UTC] Session data: Array
+(
+    [lang] => en
+    [loggedin] => 1
+    [user_id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [name] => admin
+    [username] => admin
+    [email] => admin@example.com
+    [role_id] => 7119b17b-1aa6-11f0-99a1-cc28aa53b74d
+    [last_activity] => 1745569146
+    [permissions] => Array
+        (
+            [0] => view_dashboard
+            [1] => manage_users
+            [2] => manage_roles
+            [3] => view_employees
+            [4] => manage_employees
+            [5] => view_education
+            [6] => manage_education
+            [7] => view_posts
+            [8] => manage_posts
+            [9] => generate_reports
+        )
+
+)
+
+[26-Apr-2025 08:24:07 UTC] Session valid for user: admin
+[26-Apr-2025 08:24:07 UTC] PHP Warning:  Undefined variable $valuationBonus in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 258
+[26-Apr-2025 08:24:07 UTC] PHP Warning:  Undefined variable $valuationBonus in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 258
+[26-Apr-2025 08:24:07 UTC] PHP Warning:  Undefined variable $valuationBonus in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 258
+[26-Apr-2025 08:24:07 UTC] PHP Warning:  Undefined variable $valuationBonus in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 258
+[26-Apr-2025 08:24:07 UTC] PHP Warning:  Undefined variable $valuationBonus in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 258
+[26-Apr-2025 08:24:07 UTC] PHP Warning:  Undefined variable $valuationBonus in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 258
+[26-Apr-2025 08:24:07 UTC] PHP Warning:  Undefined variable $valuationBonus in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 258
+[26-Apr-2025 08:24:07 UTC] PHP Warning:  Undefined variable $valuationBonus in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 258
+[26-Apr-2025 08:24:07 UTC] PHP Warning:  Undefined variable $valuationBonus in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 258
+[26-Apr-2025 08:24:07 UTC] PHP Warning:  Undefined variable $valuationBonus in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 258
+[26-Apr-2025 08:24:07 UTC] PHP Warning:  Undefined variable $valuationBonus in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 258
+[26-Apr-2025 08:24:07 UTC] PHP Warning:  Undefined variable $valuationBonus in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 258
+[26-Apr-2025 08:24:07 UTC] PHP Warning:  Undefined variable $valuationBonus in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 258
+[26-Apr-2025 08:24:07 UTC] PHP Warning:  Undefined variable $valuationBonus in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 258
+[26-Apr-2025 08:24:07 UTC] PHP Warning:  Undefined variable $valuationBonus in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 258
+[26-Apr-2025 08:24:07 UTC] PHP Warning:  Undefined variable $valuationBonus in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 258
+[26-Apr-2025 08:24:07 UTC] PHP Warning:  Undefined variable $valuationBonus in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 258
+[26-Apr-2025 08:24:07 UTC] PHP Warning:  Undefined variable $valuationBonus in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 258
+[26-Apr-2025 08:24:07 UTC] PHP Warning:  Undefined variable $valuationBonus in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 258
+[26-Apr-2025 08:24:07 UTC] PHP Warning:  Undefined variable $valuationBonus in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 258
+[26-Apr-2025 08:24:07 UTC] PHP Warning:  Undefined variable $valuationBonus in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 258
+[26-Apr-2025 08:24:07 UTC] PHP Warning:  Undefined variable $valuationBonus in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 258
+[26-Apr-2025 08:24:07 UTC] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 571
+[26-Apr-2025 08:24:07 UTC] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 571
+[26-Apr-2025 08:24:07 UTC] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 571
+[26-Apr-2025 08:24:07 UTC] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 571
+[26-Apr-2025 08:24:07 UTC] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 571
+[26-Apr-2025 08:24:07 UTC] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 571
+[26-Apr-2025 08:24:07 UTC] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 571
+[26-Apr-2025 08:24:07 UTC] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 571
+[26-Apr-2025 08:24:07 UTC] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 571
+[26-Apr-2025 08:24:07 UTC] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 571
+[26-Apr-2025 08:24:07 UTC] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 571
+[26-Apr-2025 08:24:07 UTC] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 571
+[26-Apr-2025 08:24:07 UTC] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 571
+[26-Apr-2025 08:24:07 UTC] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 571
+[26-Apr-2025 08:24:07 UTC] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 571
+[26-Apr-2025 08:24:07 UTC] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 571
+[26-Apr-2025 08:24:07 UTC] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 571
+[26-Apr-2025 08:24:07 UTC] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 571
+[26-Apr-2025 08:24:07 UTC] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 571
+[26-Apr-2025 08:24:07 UTC] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 571
+[26-Apr-2025 08:24:07 UTC] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 571
+[26-Apr-2025 08:24:07 UTC] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\salarymanager\Admin\salary-report.php on line 571
+[26-Apr-2025 08:38:16 UTC] Session check started. URI: /salarymanager/Admin/salary-report.php
+[26-Apr-2025 08:38:16 UTC] Session data: Array
+(
+    [lang] => en
+    [loggedin] => 1
+    [user_id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [name] => admin
+    [username] => admin
+    [email] => admin@example.com
+    [role_id] => 7119b17b-1aa6-11f0-99a1-cc28aa53b74d
+    [last_activity] => 1745569146
+    [permissions] => Array
+        (
+            [0] => view_dashboard
+            [1] => manage_users
+            [2] => manage_roles
+            [3] => view_employees
+            [4] => manage_employees
+            [5] => view_education
+            [6] => manage_education
+            [7] => view_posts
+            [8] => manage_posts
+            [9] => generate_reports
+        )
+
+)
+
+[26-Apr-2025 08:38:16 UTC] Session valid for user: admin
+[26-Apr-2025 08:38:46 UTC] Session check started. URI: /salarymanager/Admin/salary-report.php
+[26-Apr-2025 08:38:46 UTC] Session data: Array
+(
+    [lang] => fr
+    [loggedin] => 1
+    [user_id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [name] => admin
+    [username] => admin
+    [email] => admin@example.com
+    [role_id] => 7119b17b-1aa6-11f0-99a1-cc28aa53b74d
+    [last_activity] => 1745569146
+    [permissions] => Array
+        (
+            [0] => view_dashboard
+            [1] => manage_users
+            [2] => manage_roles
+            [3] => view_employees
+            [4] => manage_employees
+            [5] => view_education
+            [6] => manage_education
+            [7] => view_posts
+            [8] => manage_posts
+            [9] => generate_reports
+        )
+
+)
+
+[26-Apr-2025 08:38:46 UTC] Session valid for user: admin
+[26-Apr-2025 09:03:00 UTC] Session check started. URI: /salarymanager/Admin/salary-report.php
+[26-Apr-2025 09:03:00 UTC] Session data: Array
+(
+    [lang] => fr
+    [loggedin] => 1
+    [user_id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [name] => admin
+    [username] => admin
+    [email] => admin@example.com
+    [role_id] => 7119b17b-1aa6-11f0-99a1-cc28aa53b74d
+    [last_activity] => 1745569146
+    [permissions] => Array
+        (
+            [0] => view_dashboard
+            [1] => manage_users
+            [2] => manage_roles
+            [3] => view_employees
+            [4] => manage_employees
+            [5] => view_education
+            [6] => manage_education
+            [7] => view_posts
+            [8] => manage_posts
+            [9] => generate_reports
+        )
+
+)
+
+[26-Apr-2025 09:03:00 UTC] Session valid for user: admin
+[26-Apr-2025 09:07:05 UTC] Session check started. URI: /salarymanager/Admin/salary-report.php
+[26-Apr-2025 09:07:05 UTC] Session data: Array
+(
+    [lang] => en
+    [loggedin] => 1
+    [user_id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [name] => admin
+    [username] => admin
+    [email] => admin@example.com
+    [role_id] => 7119b17b-1aa6-11f0-99a1-cc28aa53b74d
+    [last_activity] => 1745569146
+    [permissions] => Array
+        (
+            [0] => view_dashboard
+            [1] => manage_users
+            [2] => manage_roles
+            [3] => view_employees
+            [4] => manage_employees
+            [5] => view_education
+            [6] => manage_education
+            [7] => view_posts
+            [8] => manage_posts
+            [9] => generate_reports
+        )
+
+)
+
+[26-Apr-2025 09:07:05 UTC] Session valid for user: admin
+[26-Apr-2025 09:33:46 UTC] Session check started. URI: /salarymanager/Admin/salary-report.php
+[26-Apr-2025 09:33:46 UTC] Session data: Array
+(
+    [lang] => en
+    [loggedin] => 1
+    [user_id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [name] => admin
+    [username] => admin
+    [email] => admin@example.com
+    [role_id] => 7119b17b-1aa6-11f0-99a1-cc28aa53b74d
+    [last_activity] => 1745569146
+    [permissions] => Array
+        (
+            [0] => view_dashboard
+            [1] => manage_users
+            [2] => manage_roles
+            [3] => view_employees
+            [4] => manage_employees
+            [5] => view_education
+            [6] => manage_education
+            [7] => view_posts
+            [8] => manage_posts
+            [9] => generate_reports
+        )
+
+)
+
+[26-Apr-2025 09:33:46 UTC] Session valid for user: admin
+[26-Apr-2025 09:33:56 UTC] Session check started. URI: /salarymanager/Admin/salary-report.php
+[26-Apr-2025 09:33:56 UTC] Session data: Array
+(
+    [lang] => fr
+    [loggedin] => 1
+    [user_id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [name] => admin
+    [username] => admin
+    [email] => admin@example.com
+    [role_id] => 7119b17b-1aa6-11f0-99a1-cc28aa53b74d
+    [last_activity] => 1745569146
+    [permissions] => Array
+        (
+            [0] => view_dashboard
+            [1] => manage_users
+            [2] => manage_roles
+            [3] => view_employees
+            [4] => manage_employees
+            [5] => view_education
+            [6] => manage_education
+            [7] => view_posts
+            [8] => manage_posts
+            [9] => generate_reports
+        )
+
+)
+
+[26-Apr-2025 09:33:56 UTC] Session valid for user: admin
+[26-Apr-2025 09:37:11 UTC] Session check started. URI: /salarymanager/Admin/manager-debts.php
+[26-Apr-2025 09:37:11 UTC] Session data: Array
+(
+    [lang] => fr
+    [loggedin] => 1
+    [user_id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [name] => admin
+    [username] => admin
+    [email] => admin@example.com
+    [role_id] => 7119b17b-1aa6-11f0-99a1-cc28aa53b74d
+    [last_activity] => 1745569146
+    [permissions] => Array
+        (
+            [0] => view_dashboard
+            [1] => manage_users
+            [2] => manage_roles
+            [3] => view_employees
+            [4] => manage_employees
+            [5] => view_education
+            [6] => manage_education
+            [7] => view_posts
+            [8] => manage_posts
+            [9] => generate_reports
+        )
+
+)
+
+[26-Apr-2025 09:37:11 UTC] Session valid for user: admin
+[26-Apr-2025 09:37:13 UTC] Session check started. URI: /salarymanager/Admin/manager-debts.php?month=9&year=2025
+[26-Apr-2025 09:37:13 UTC] Session data: Array
+(
+    [lang] => fr
+    [loggedin] => 1
+    [user_id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [name] => admin
+    [username] => admin
+    [email] => admin@example.com
+    [role_id] => 7119b17b-1aa6-11f0-99a1-cc28aa53b74d
+    [last_activity] => 1745569146
+    [permissions] => Array
+        (
+            [0] => view_dashboard
+            [1] => manage_users
+            [2] => manage_roles
+            [3] => view_employees
+            [4] => manage_employees
+            [5] => view_education
+            [6] => manage_education
+            [7] => view_posts
+            [8] => manage_posts
+            [9] => generate_reports
+        )
+
+)
+
+[26-Apr-2025 09:37:13 UTC] Session valid for user: admin
+[26-Apr-2025 09:37:43 UTC] Session check started. URI: /salarymanager/Admin/manager-debts.php?month=9&year=2025
+[26-Apr-2025 09:37:43 UTC] Session data: Array
+(
+    [lang] => fr
+    [loggedin] => 1
+    [user_id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [name] => admin
+    [username] => admin
+    [email] => admin@example.com
+    [role_id] => 7119b17b-1aa6-11f0-99a1-cc28aa53b74d
+    [last_activity] => 1745569146
+    [permissions] => Array
+        (
+            [0] => view_dashboard
+            [1] => manage_users
+            [2] => manage_roles
+            [3] => view_employees
+            [4] => manage_employees
+            [5] => view_education
+            [6] => manage_education
+            [7] => view_posts
+            [8] => manage_posts
+            [9] => generate_reports
+        )
+
+)
+
+[26-Apr-2025 09:37:43 UTC] Session valid for user: admin
+[26-Apr-2025 09:37:45 UTC] Session check started. URI: /salarymanager/Admin/manager-debts.php?month=9&year=2025
+[26-Apr-2025 09:37:45 UTC] Session data: Array
+(
+    [lang] => fr
+    [loggedin] => 1
+    [user_id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [name] => admin
+    [username] => admin
+    [email] => admin@example.com
+    [role_id] => 7119b17b-1aa6-11f0-99a1-cc28aa53b74d
+    [last_activity] => 1745569146
+    [permissions] => Array
+        (
+            [0] => view_dashboard
+            [1] => manage_users
+            [2] => manage_roles
+            [3] => view_employees
+            [4] => manage_employees
+            [5] => view_education
+            [6] => manage_education
+            [7] => view_posts
+            [8] => manage_posts
+            [9] => generate_reports
+        )
+
+    [success_message] => Debt record created successfully
+)
+
+[26-Apr-2025 09:37:45 UTC] Session valid for user: admin
+[26-Apr-2025 09:38:35 UTC] Session check started. URI: /salarymanager/Admin/manager-debts.php?month=9&year=2025
+[26-Apr-2025 09:38:35 UTC] Session data: Array
+(
+    [lang] => fr
+    [loggedin] => 1
+    [user_id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [name] => admin
+    [username] => admin
+    [email] => admin@example.com
+    [role_id] => 7119b17b-1aa6-11f0-99a1-cc28aa53b74d
+    [last_activity] => 1745569146
+    [permissions] => Array
+        (
+            [0] => view_dashboard
+            [1] => manage_users
+            [2] => manage_roles
+            [3] => view_employees
+            [4] => manage_employees
+            [5] => view_education
+            [6] => manage_education
+            [7] => view_posts
+            [8] => manage_posts
+            [9] => generate_reports
+        )
+
+)
+
+[26-Apr-2025 09:38:35 UTC] Session valid for user: admin
+[26-Apr-2025 09:38:37 UTC] Session check started. URI: /salarymanager/Admin/manager-debts.php?month=9&year=2025
+[26-Apr-2025 09:38:37 UTC] Session data: Array
+(
+    [lang] => fr
+    [loggedin] => 1
+    [user_id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [name] => admin
+    [username] => admin
+    [email] => admin@example.com
+    [role_id] => 7119b17b-1aa6-11f0-99a1-cc28aa53b74d
+    [last_activity] => 1745569146
+    [permissions] => Array
+        (
+            [0] => view_dashboard
+            [1] => manage_users
+            [2] => manage_roles
+            [3] => view_employees
+            [4] => manage_employees
+            [5] => view_education
+            [6] => manage_education
+            [7] => view_posts
+            [8] => manage_posts
+            [9] => generate_reports
+        )
+
+    [success_message] => Debt record created successfully
+)
+
+[26-Apr-2025 09:38:37 UTC] Session valid for user: admin
+[26-Apr-2025 09:39:11 UTC] Session check started. URI: /salarymanager/Admin/employee-evaluations.php
+[26-Apr-2025 09:39:11 UTC] Session data: Array
+(
+    [lang] => fr
+    [loggedin] => 1
+    [user_id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [name] => admin
+    [username] => admin
+    [email] => admin@example.com
+    [role_id] => 7119b17b-1aa6-11f0-99a1-cc28aa53b74d
+    [last_activity] => 1745569146
+    [permissions] => Array
+        (
+            [0] => view_dashboard
+            [1] => manage_users
+            [2] => manage_roles
+            [3] => view_employees
+            [4] => manage_employees
+            [5] => view_education
+            [6] => manage_education
+            [7] => view_posts
+            [8] => manage_posts
+            [9] => generate_reports
+        )
+
+)
+
+[26-Apr-2025 09:39:11 UTC] Session valid for user: admin
+[26-Apr-2025 09:39:17 UTC] Session check started. URI: /salarymanager/Admin/batch-evaluations.php?month=4&year=2025
+[26-Apr-2025 09:39:17 UTC] Session data: Array
+(
+    [lang] => fr
+    [loggedin] => 1
+    [user_id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [name] => admin
+    [username] => admin
+    [email] => admin@example.com
+    [role_id] => 7119b17b-1aa6-11f0-99a1-cc28aa53b74d
+    [last_activity] => 1745569146
+    [permissions] => Array
+        (
+            [0] => view_dashboard
+            [1] => manage_users
+            [2] => manage_roles
+            [3] => view_employees
+            [4] => manage_employees
+            [5] => view_education
+            [6] => manage_education
+            [7] => view_posts
+            [8] => manage_posts
+            [9] => generate_reports
+        )
+
+)
+
+[26-Apr-2025 09:39:17 UTC] Session valid for user: admin
+[26-Apr-2025 09:39:21 UTC] Session check started. URI: /salarymanager/Admin/ajax-handlers/export-evaluations-template.php?month=4&year=2025&shop_id=
+[26-Apr-2025 09:39:21 UTC] Session data: Array
+(
+    [lang] => fr
+    [loggedin] => 1
+    [user_id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [name] => admin
+    [username] => admin
+    [email] => admin@example.com
+    [role_id] => 7119b17b-1aa6-11f0-99a1-cc28aa53b74d
+    [last_activity] => 1745569146
+    [permissions] => Array
+        (
+            [0] => view_dashboard
+            [1] => manage_users
+            [2] => manage_roles
+            [3] => view_employees
+            [4] => manage_employees
+            [5] => view_education
+            [6] => manage_education
+            [7] => view_posts
+            [8] => manage_posts
+            [9] => generate_reports
+        )
+
+)
+
+[26-Apr-2025 09:39:21 UTC] Session valid for user: admin
+[26-Apr-2025 09:40:22 UTC] Session check started. URI: /salarymanager/Admin/ajax-handlers/import-evaluations.php
+[26-Apr-2025 09:40:22 UTC] Session data: Array
+(
+    [lang] => fr
+    [loggedin] => 1
+    [user_id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [name] => admin
+    [username] => admin
+    [email] => admin@example.com
+    [role_id] => 7119b17b-1aa6-11f0-99a1-cc28aa53b74d
+    [last_activity] => 1745569146
+    [permissions] => Array
+        (
+            [0] => view_dashboard
+            [1] => manage_users
+            [2] => manage_roles
+            [3] => view_employees
+            [4] => manage_employees
+            [5] => view_education
+            [6] => manage_education
+            [7] => view_posts
+            [8] => manage_posts
+            [9] => generate_reports
+        )
+
+)
+
+[26-Apr-2025 09:40:22 UTC] Session valid for user: admin
+[26-Apr-2025 09:40:25 UTC] Session check started. URI: /salarymanager/Admin/batch-evaluations.php?month=4&year=2025
+[26-Apr-2025 09:40:25 UTC] Session data: Array
+(
+    [lang] => fr
+    [loggedin] => 1
+    [user_id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [name] => admin
+    [username] => admin
+    [email] => admin@example.com
+    [role_id] => 7119b17b-1aa6-11f0-99a1-cc28aa53b74d
+    [last_activity] => 1745569146
+    [permissions] => Array
+        (
+            [0] => view_dashboard
+            [1] => manage_users
+            [2] => manage_roles
+            [3] => view_employees
+            [4] => manage_employees
+            [5] => view_education
+            [6] => manage_education
+            [7] => view_posts
+            [8] => manage_posts
+            [9] => generate_reports
+        )
+
+)
+
+[26-Apr-2025 09:40:25 UTC] Session valid for user: admin
+[26-Apr-2025 09:42:53 UTC] Session check started. URI: /salarymanager/Admin/salary-report.php
+[26-Apr-2025 09:42:53 UTC] Session data: Array
+(
+    [lang] => fr
+    [loggedin] => 1
+    [user_id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [name] => admin
+    [username] => admin
+    [email] => admin@example.com
+    [role_id] => 7119b17b-1aa6-11f0-99a1-cc28aa53b74d
+    [last_activity] => 1745569146
+    [permissions] => Array
+        (
+            [0] => view_dashboard
+            [1] => manage_users
+            [2] => manage_roles
+            [3] => view_employees
+            [4] => manage_employees
+            [5] => view_education
+            [6] => manage_education
+            [7] => view_posts
+            [8] => manage_posts
+            [9] => generate_reports
+        )
+
+)
+
+[26-Apr-2025 09:42:53 UTC] Session valid for user: admin
+[26-Apr-2025 10:00:19 UTC] Session check started. URI: /salarymanager/Admin/salary-report.php
+[26-Apr-2025 10:00:19 UTC] Session data: Array
+(
+    [lang] => fr
+    [loggedin] => 1
+    [user_id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [name] => admin
+    [username] => admin
+    [email] => admin@example.com
+    [role_id] => 7119b17b-1aa6-11f0-99a1-cc28aa53b74d
+    [last_activity] => 1745569146
+    [permissions] => Array
+        (
+            [0] => view_dashboard
+            [1] => manage_users
+            [2] => manage_roles
+            [3] => view_employees
+            [4] => manage_employees
+            [5] => view_education
+            [6] => manage_education
+            [7] => view_posts
+            [8] => manage_posts
+            [9] => generate_reports
+        )
+
+)
+
+[26-Apr-2025 10:00:19 UTC] Session valid for user: admin
+[26-Apr-2025 10:00:54 UTC] Session check started. URI: /salarymanager/Admin/salary-report.php
+[26-Apr-2025 10:00:54 UTC] Session data: Array
+(
+    [lang] => en
+    [loggedin] => 1
+    [user_id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [name] => admin
+    [username] => admin
+    [email] => admin@example.com
+    [role_id] => 7119b17b-1aa6-11f0-99a1-cc28aa53b74d
+    [last_activity] => 1745569146
+    [permissions] => Array
+        (
+            [0] => view_dashboard
+            [1] => manage_users
+            [2] => manage_roles
+            [3] => view_employees
+            [4] => manage_employees
+            [5] => view_education
+            [6] => manage_education
+            [7] => view_posts
+            [8] => manage_posts
+            [9] => generate_reports
+        )
+
+)
+
+[26-Apr-2025 10:00:54 UTC] Session valid for user: admin
+[26-Apr-2025 12:10:27 Europe/Berlin] Monthly-sales.php - Page load started
+[26-Apr-2025 10:10:29 UTC] Session check started. URI: /salarymanager/Admin/monthly-sales.php
+[26-Apr-2025 10:10:29 UTC] Session data: Array
+(
+    [lang] => en
+    [loggedin] => 1
+    [user_id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [name] => admin
+    [username] => admin
+    [email] => admin@example.com
+    [role_id] => 7119b17b-1aa6-11f0-99a1-cc28aa53b74d
+    [last_activity] => 1745569146
+    [permissions] => Array
+        (
+            [0] => view_dashboard
+            [1] => manage_users
+            [2] => manage_roles
+            [3] => view_employees
+            [4] => manage_employees
+            [5] => view_education
+            [6] => manage_education
+            [7] => view_posts
+            [8] => manage_posts
+            [9] => generate_reports
+        )
+
+)
+
+[26-Apr-2025 10:10:29 UTC] Session valid for user: admin
+[26-Apr-2025 10:10:29 UTC] Monthly-sales.php - Successfully fetched 9 open months
+[26-Apr-2025 10:10:29 UTC] Monthly-sales.php - Successfully fetched 22 shops
+[26-Apr-2025 10:10:29 UTC] Monthly-sales.php - Successfully fetched 3 bonus tiers
+[26-Apr-2025 10:10:29 UTC] Monthly-sales.php - Executing shop sales query with params: {":default_month":4,":default_year":2025,":selected_month":4,":selected_year":2025}
+[26-Apr-2025 10:10:29 UTC] Monthly-sales.php - Successfully fetched 22 shop sales records
+[26-Apr-2025 12:10:54 Europe/Berlin] Bonus-configuration.php - Page load started
+[26-Apr-2025 10:10:56 UTC] Session check started. URI: /salarymanager/Admin/bonus-configuration.php
+[26-Apr-2025 10:10:56 UTC] Session data: Array
+(
+    [lang] => en
+    [loggedin] => 1
+    [user_id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [name] => admin
+    [username] => admin
+    [email] => admin@example.com
+    [role_id] => 7119b17b-1aa6-11f0-99a1-cc28aa53b74d
+    [last_activity] => 1745569146
+    [permissions] => Array
+        (
+            [0] => view_dashboard
+            [1] => manage_users
+            [2] => manage_roles
+            [3] => view_employees
+            [4] => manage_employees
+            [5] => view_education
+            [6] => manage_education
+            [7] => view_posts
+            [8] => manage_posts
+            [9] => generate_reports
+        )
+
+)
+
+[26-Apr-2025 10:10:56 UTC] Session valid for user: admin
+[26-Apr-2025 12:10:59 Europe/Berlin] Bonus-configuration.php - Page load started
+[26-Apr-2025 10:11:01 UTC] Session check started. URI: /salarymanager/Admin/bonus-configuration.php
+[26-Apr-2025 10:11:01 UTC] Session data: Array
+(
+    [lang] => en
+    [loggedin] => 1
+    [user_id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [name] => admin
+    [username] => admin
+    [email] => admin@example.com
+    [role_id] => 7119b17b-1aa6-11f0-99a1-cc28aa53b74d
+    [last_activity] => 1745569146
+    [permissions] => Array
+        (
+            [0] => view_dashboard
+            [1] => manage_users
+            [2] => manage_roles
+            [3] => view_employees
+            [4] => manage_employees
+            [5] => view_education
+            [6] => manage_education
+            [7] => view_posts
+            [8] => manage_posts
+            [9] => generate_reports
+        )
+
+)
+
+[26-Apr-2025 10:11:01 UTC] Session valid for user: admin
+[26-Apr-2025 12:11:01 Europe/Berlin] Bonus-configuration.php - Page load started
+[26-Apr-2025 10:11:03 UTC] Session check started. URI: /salarymanager/Admin/bonus-configuration.php
+[26-Apr-2025 10:11:03 UTC] Session data: Array
+(
+    [lang] => en
+    [loggedin] => 1
+    [user_id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [name] => admin
+    [username] => admin
+    [email] => admin@example.com
+    [role_id] => 7119b17b-1aa6-11f0-99a1-cc28aa53b74d
+    [last_activity] => 1745569146
+    [permissions] => Array
+        (
+            [0] => view_dashboard
+            [1] => manage_users
+            [2] => manage_roles
+            [3] => view_employees
+            [4] => manage_employees
+            [5] => view_education
+            [6] => manage_education
+            [7] => view_posts
+            [8] => manage_posts
+            [9] => generate_reports
+        )
+
+    [success_message] => bonus_config_deleted_success
+)
+
+[26-Apr-2025 10:11:03 UTC] Session valid for user: admin
+[26-Apr-2025 12:11:05 Europe/Berlin] Monthly-sales.php - Page load started
+[26-Apr-2025 10:11:08 UTC] Session check started. URI: /salarymanager/Admin/monthly-sales.php
+[26-Apr-2025 10:11:08 UTC] Session data: Array
+(
+    [lang] => en
+    [loggedin] => 1
+    [user_id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [name] => admin
+    [username] => admin
+    [email] => admin@example.com
+    [role_id] => 7119b17b-1aa6-11f0-99a1-cc28aa53b74d
+    [last_activity] => 1745569146
+    [permissions] => Array
+        (
+            [0] => view_dashboard
+            [1] => manage_users
+            [2] => manage_roles
+            [3] => view_employees
+            [4] => manage_employees
+            [5] => view_education
+            [6] => manage_education
+            [7] => view_posts
+            [8] => manage_posts
+            [9] => generate_reports
+        )
+
+)
+
+[26-Apr-2025 10:11:08 UTC] Session valid for user: admin
+[26-Apr-2025 10:11:08 UTC] Monthly-sales.php - Successfully fetched 9 open months
+[26-Apr-2025 10:11:08 UTC] Monthly-sales.php - Successfully fetched 22 shops
+[26-Apr-2025 10:11:08 UTC] Monthly-sales.php - Successfully fetched 2 bonus tiers
+[26-Apr-2025 10:11:08 UTC] Monthly-sales.php - Executing shop sales query with params: {":default_month":4,":default_year":2025,":selected_month":4,":selected_year":2025}
+[26-Apr-2025 10:11:08 UTC] Monthly-sales.php - Successfully fetched 22 shop sales records
