@@ -54,6 +54,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["action"]) && $_POST["a
     $ranking = $_POST["ranking"];
     $comments = $_POST["comments"] ?? '';
     
+    // Fix for empty bonus amount - convert empty strings to null or 0
+    $bonusAmount = (!empty($_POST["bonus_amount"]) || $_POST["bonus_amount"] === '0') 
+                  ? floatval($_POST["bonus_amount"]) 
+                  : 0;
+    
     // Calculate total score (sum of all metrics except ranking)
     $totalScore = $attendance + $cleanliness + $unloading + $sales + 
                   $order_management + $stock_sheet + $inventory + $machine_and_team + $management;
@@ -67,6 +72,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["action"]) && $_POST["a
             $_SESSION["error_message"] = "Error: Employee not found. Please try again.";
             header("location: employee-evaluations.php?month=$month&year=$year" . ($selectedShop ? "&shop_id=$selectedShop" : ""));
             exit;
+        }
+        
+        // Calculate the bonus amount based on the total score
+        if ($bonusAmount == 0) {
+            foreach ($ranges as $range) {
+                if ($totalScore >= $range['min_value'] && $totalScore <= $range['max_value']) {
+                    $bonusAmount = $range['amount'];
+                    break;
+                }
+            }
         }
         
         // Check if an evaluation already exists for this employee/month/year
@@ -84,13 +99,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["action"]) && $_POST["a
                 SET attendance = ?, cleanliness = ?, unloading = ?, 
                     sales = ?, order_management = ?, stock_sheet = ?,
                     inventory = ?, machine_and_team = ?, management = ?, ranking = ?,
-                    total_score = ?
+                    total_score = ?, bonus_amount = ?
                 WHERE id = ?
             ");
             $stmt->execute([
                 $attendance, $cleanliness, $unloading, $sales, 
                 $order_management, $stock_sheet, $inventory, $machine_and_team,
-                $management, $ranking, $totalScore, $evaluationId
+                $management, $ranking, $totalScore, $bonusAmount, $evaluationId
             ]);
             
             $_SESSION["success_message"] = "Evaluation updated successfully for " . getEmployeeName($pdo, $employeeId);
@@ -100,8 +115,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["action"]) && $_POST["a
                 INSERT INTO employee_evaluations 
                 (employee_id, evaluation_month, attendance, cleanliness, 
                 unloading, sales, order_management, stock_sheet, inventory,
-                machine_and_team, management, ranking, total_score) 
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                machine_and_team, management, ranking, total_score, bonus_amount) 
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             ");
             
             // Create evaluation date as the first day of the selected month
@@ -110,7 +125,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["action"]) && $_POST["a
             $stmt->execute([
                 $employeeId, $evaluationMonth, $attendance, $cleanliness, 
                 $unloading, $sales, $order_management, $stock_sheet,
-                $inventory, $machine_and_team, $management, $ranking, $totalScore
+                $inventory, $machine_and_team, $management, $ranking, $totalScore, $bonusAmount
             ]);
             
             $_SESSION["success_message"] = "Evaluation added successfully for " . getEmployeeName($pdo, $employeeId);
@@ -900,6 +915,37 @@ function getRatingAmount($pdo, $totalScore) {
                         </div>
                     </div>
                     
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title"><?php echo __('bonus_amount'); ?> <i class="bx bx-info-circle" data-bs-toggle="tooltip" title="<?php echo __('bonus_amount_tooltip'); ?>"></i></h5>
+                                    
+                                    <div class="mb-3">
+                                        <div class="d-flex align-items-center">
+                                            <div id="calculated-bonus-container" class="me-3">
+                                                <label class="form-label"><?php echo __('calculated_bonus'); ?></label>
+                                                <div class="input-group">
+                                                    <span class="input-group-text">$</span>
+                                                    <input type="text" class="form-control" id="calculated-bonus" readonly>
+                                                </div>
+                                                <small class="text-muted"><?php echo __('automatically_calculated'); ?></small>
+                                            </div>
+                                            <div id="manual-bonus-container">
+                                                <label for="bonus_amount" class="form-label"><?php echo __('manual_bonus'); ?></label>
+                                                <div class="input-group">
+                                                    <span class="input-group-text">$</span>
+                                                    <input type="number" class="form-control" id="bonus_amount" name="bonus_amount" min="0" step="0.01">
+                                                </div>
+                                                <small class="text-muted"><?php echo __('leave_empty_for_auto'); ?></small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
                     <div class="mb-3">
                         <label for="comments" class="form-label"><?php echo __('comments_feedback'); ?></label>
                         <textarea class="form-control" id="comments" name="comments" rows="4" placeholder="<?php echo __('provide_detailed_feedback_and_recommendations_for_improvement'); ?>"></textarea>
@@ -1222,291 +1268,224 @@ function getRatingAmount($pdo, $totalScore) {
             }
         });
         
+        // Set the bonus amount if available
+        if (evaluation.bonus_amount) {
+            $('#bonus_amount').val(evaluation.bonus_amount);
+        }
+        
+        // Calculate and show the automatically calculated bonus
+        const totalScore = evaluation.total_score / 10;
+        calculateAutomaticBonus(totalScore);
+        
         // Set comments
         $('#comments').val(evaluation.comments || '');
     }
     
-    // Function to populate evaluation view
-    function populateEvaluationView(evaluation) {
-        // Format date
-        const evalDate = new Date(evaluation.evaluation_month);
-        const formattedDate = evalDate.toLocaleDateString('en-US', {
-            year: 'numeric', 
-            month: 'long', 
-            day: 'numeric'
+    // Function to calculate automatic bonus based on total score
+    function calculateAutomaticBonus(totalScore) {
+        if (!totalScore) {
+            // If no total score, calculate it from the current slider values
+            totalScore = calculateTotalScore();
+        }
+        
+        // Get the ranges from PHP
+        const ranges = <?php echo json_encode($ranges); ?>;
+        let calculatedBonus = 0;
+        
+        // Find matching range and get the amount
+        for (const range of ranges) {
+            if (totalScore >= range.min_value && totalScore <= range.max_value) {
+                calculatedBonus = range.amount;
+                break;
+            }
+        }
+        
+        // Display the calculated bonus
+        $('#calculated-bonus').val(calculatedBonus.toFixed(2));
+        
+        return calculatedBonus;
+    }
+    
+    // Function to calculate total score
+    function calculateTotalScore() {
+        const fields = [
+            'attendance', 'cleanliness', 'unloading', 'sales', 'order_management',
+            'stock_sheet', 'inventory', 'machine_and_team', 'management'
+        ];
+        
+        let totalScore = 0;
+        fields.forEach(field => {
+            const slider = document.getElementById(field + '-slider');
+            if (slider) {
+                totalScore += parseInt(slider.value);
+            }
         });
         
-        // Get rating color classes
-        const overallClass = getRatingColorClass(evaluation.total_score / 10);
-        const attendanceClass = getRatingColorClass(evaluation.attendance / 10);
-        const cleanlinessClass = getRatingColorClass(evaluation.cleanliness / 10);
-        const unloadingClass = getRatingColorClass(evaluation.unloading / 10);
-        const salesClass = getRatingColorClass(evaluation.sales / 10);
-        const orderManagementClass = getRatingColorClass(evaluation.order_management / 10);
-        const stockSheetClass = getRatingColorClass(evaluation.stock_sheet / 10);
-        const inventoryClass = getRatingColorClass(evaluation.inventory / 10);
-        const machineAndTeamClass = getRatingColorClass(evaluation.machine_and_team / 10);
-        const managementClass = getRatingColorClass(evaluation.management / 10);
+        return totalScore / 10; // Convert to 0-10 scale
+    }
+    
+    // Initialize tooltips
+    $(function () {
+        $('[data-bs-toggle="tooltip"]').tooltip();
+    });
+    
+    // Add event listener for real-time score calculation and automatic bonus update
+    document.addEventListener('DOMContentLoaded', function() {
+        const ratingSliders = document.querySelectorAll('.rating-slider');
         
-        // Get bonus amount
-        const bonusAmount = evaluation.bonus_amount ? parseFloat(evaluation.bonus_amount) : 0;
+        // Update automatic bonus when any slider changes
+        ratingSliders.forEach(slider => {
+            slider.addEventListener('input', function() {
+                const totalScore = calculateTotalScore();
+                calculateAutomaticBonus(totalScore);
+            });
+        });
         
-        // Build HTML
+        // Calculate bonus immediately when the evaluate modal is opened
+        $('#evaluateModal').on('shown.bs.modal', function() {
+            // Calculate the bonus amount based on default values
+            setTimeout(function() {
+                calculateAutomaticBonus(calculateTotalScore());
+            }, 100);
+        });
+    });
+    
+    // Function to populate the view evaluation modal
+    function populateEvaluationView(evaluation) {
+        console.log("Populating view with evaluation data:", evaluation);
+        
+        // Format the date if available
+        let formattedDate = 'N/A';
+        if (evaluation.evaluation_month) {
+            const dateParts = evaluation.evaluation_month.split('-');
+            const year = dateParts[0];
+            const month = new Date(year, dateParts[1]-1, 1).toLocaleString('default', { month: 'long' });
+            formattedDate = month + ' ' + year;
+        }
+        
+        // Calculate total score as a decimal
+        const totalScore = evaluation.total_score / 10;
+        
+        // Build HTML content for the view modal
         let html = `
-            <div class="card mb-3">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-md-8">
-                            <h5 class="card-title">${evaluation.employee_name}</h5>
-                            <p class="card-text text-muted">
-                                ${evaluation.position || '<?php echo __("no_position"); ?>'} <?php echo __("at"); ?> ${evaluation.shop_name || '<?php echo __("no_shop"); ?>'}
-                            </p>
-                            <p><?php echo __("evaluated_for"); ?>: <strong>${formattedDate}</strong></p>
+            <div class="mb-4">
+                <h5>${evaluation.employee_name || 'Employee'}</h5>
+                <div class="text-muted">${evaluation.position || 'N/A'} at ${evaluation.shop_name || 'N/A'}</div>
+                <div class="text-muted">Period: ${formattedDate}</div>
+            </div>
+            
+            <div class="table-responsive mb-4">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Category</th>
+                            <th class="text-center" style="width: 100px;">Score</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Attendance</td>
+                            <td class="text-center"><span class="badge ${getBadgeClassForView(evaluation.attendance)}">${evaluation.attendance}</span></td>
+                        </tr>
+                        <tr>
+                            <td>Cleanliness</td>
+                            <td class="text-center"><span class="badge ${getBadgeClassForView(evaluation.cleanliness)}">${evaluation.cleanliness}</span></td>
+                        </tr>
+                        <tr>
+                            <td>Unloading</td>
+                            <td class="text-center"><span class="badge ${getBadgeClassForView(evaluation.unloading)}">${evaluation.unloading}</span></td>
+                        </tr>
+                        <tr>
+                            <td>Sales</td>
+                            <td class="text-center"><span class="badge ${getBadgeClassForView(evaluation.sales)}">${evaluation.sales}</span></td>
+                        </tr>
+                        <tr>
+                            <td>Order Management</td>
+                            <td class="text-center"><span class="badge ${getBadgeClassForView(evaluation.order_management)}">${evaluation.order_management}</span></td>
+                        </tr>
+                        <tr>
+                            <td>Stock Sheet</td>
+                            <td class="text-center"><span class="badge ${getBadgeClassForView(evaluation.stock_sheet)}">${evaluation.stock_sheet}</span></td>
+                        </tr>
+                        <tr>
+                            <td>Inventory</td>
+                            <td class="text-center"><span class="badge ${getBadgeClassForView(evaluation.inventory)}">${evaluation.inventory}</span></td>
+                        </tr>
+                        <tr>
+                            <td>Machine and Team</td>
+                            <td class="text-center"><span class="badge ${getBadgeClassForView(evaluation.machine_and_team)}">${evaluation.machine_and_team}</span></td>
+                        </tr>
+                        <tr>
+                            <td>Management</td>
+                            <td class="text-center"><span class="badge ${getBadgeClassForView(evaluation.management)}">${evaluation.management}</span></td>
+                        </tr>
+                        <tr>
+                            <td>Overall Ranking</td>
+                            <td class="text-center"><span class="badge ${getBadgeClassForView(evaluation.ranking)}">${evaluation.ranking}</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="row mb-4">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Total Score</h5>
+                            <div class="text-center">
+                                <div class="display-4 ${getTotalScoreColorClass(totalScore)}" style="font-weight: bold;">
+                                    ${totalScore.toFixed(1)}
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-md-4 text-center">
-                            <div class="mt-2">
-                                <h6><?php echo __("overall_rating"); ?></h6>
-                                <div class="display-4 ${overallClass} fw-bold">${(evaluation.total_score / 10).toFixed(1)}</div>
-                                <div class="mt-2 ${bonusAmount > 0 ? 'text-success' : 'text-muted'}">
-                                    <strong><?php echo __("bonus"); ?>: $${bonusAmount.toFixed(2)}</strong>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Bonus Amount</h5>
+                            <div class="text-center">
+                                <div class="display-4" style="font-weight: bold;">
+                                    $${parseFloat(evaluation.bonus_amount || 0).toFixed(2)}
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            
-            <div class="row">
-                <div class="col-md-6 mb-3">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h6 class="card-title"><?php echo __('category_attendance'); ?></h6>
-                            <div class="progress mt-2" style="height: 10px;">
-                                <div class="progress-bar ${getProgressBarClass(evaluation.attendance / 10)}" 
-                                     role="progressbar" 
-                                     style="width: ${evaluation.attendance * 10}%" 
-                                     aria-valuenow="${evaluation.attendance}" 
-                                     aria-valuemin="0" 
-                                     aria-valuemax="10"></div>
-                            </div>
-                            <div class="d-flex justify-content-between mt-1">
-                                <small class="text-muted"><?php echo __('score'); ?></small>
-                                <span class="${attendanceClass} fw-bold">${evaluation.attendance / 10}</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-6 mb-3">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h6 class="card-title"><?php echo __('category_cleanliness'); ?></h6>
-                            <div class="progress mt-2" style="height: 10px;">
-                                <div class="progress-bar ${getProgressBarClass(evaluation.cleanliness / 10)}" 
-                                     role="progressbar" 
-                                     style="width: ${evaluation.cleanliness * 10}%" 
-                                     aria-valuenow="${evaluation.cleanliness}" 
-                                     aria-valuemin="0" 
-                                     aria-valuemax="10"></div>
-                            </div>
-                            <div class="d-flex justify-content-between mt-1">
-                                <small class="text-muted"><?php echo __('score'); ?></small>
-                                <span class="${cleanlinessClass} fw-bold">${evaluation.cleanliness / 10}</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-6 mb-3">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h6 class="card-title"><?php echo __('category_unloading'); ?></h6>
-                            <div class="progress mt-2" style="height: 10px;">
-                                <div class="progress-bar ${getProgressBarClass(evaluation.unloading / 10)}" 
-                                     role="progressbar" 
-                                     style="width: ${evaluation.unloading * 10}%" 
-                                     aria-valuenow="${evaluation.unloading}" 
-                                     aria-valuemin="0" 
-                                     aria-valuemax="10"></div>
-                            </div>
-                            <div class="d-flex justify-content-between mt-1">
-                                <small class="text-muted"><?php echo __('score'); ?></small>
-                                <span class="${unloadingClass} fw-bold">${evaluation.unloading / 10}</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-6 mb-3">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h6 class="card-title"><?php echo __('category_sales'); ?></h6>
-                            <div class="progress mt-2" style="height: 10px;">
-                                <div class="progress-bar ${getProgressBarClass(evaluation.sales / 10)}" 
-                                     role="progressbar" 
-                                     style="width: ${evaluation.sales * 10}%" 
-                                     aria-valuenow="${evaluation.sales}" 
-                                     aria-valuemin="0" 
-                                     aria-valuemax="10"></div>
-                            </div>
-                            <div class="d-flex justify-content-between mt-1">
-                                <small class="text-muted"><?php echo __('score'); ?></small>
-                                <span class="${salesClass} fw-bold">${evaluation.sales / 10}</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="row">
-                <div class="col-md-6 mb-3">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h6 class="card-title"><?php echo __('category_order_management'); ?></h6>
-                            <div class="progress mt-2" style="height: 10px;">
-                                <div class="progress-bar ${getProgressBarClass(evaluation.order_management / 10)}" 
-                                     role="progressbar" 
-                                     style="width: ${evaluation.order_management * 10}%" 
-                                     aria-valuenow="${evaluation.order_management}" 
-                                     aria-valuemin="0" 
-                                     aria-valuemax="10"></div>
-                            </div>
-                            <div class="d-flex justify-content-between mt-1">
-                                <small class="text-muted"><?php echo __('score'); ?></small>
-                                <span class="${orderManagementClass} fw-bold">${evaluation.order_management / 10}</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-6 mb-3">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h6 class="card-title"><?php echo __('category_stock_sheet'); ?></h6>
-                            <div class="progress mt-2" style="height: 10px;">
-                                <div class="progress-bar ${getProgressBarClass(evaluation.stock_sheet / 10)}" 
-                                     role="progressbar" 
-                                     style="width: ${evaluation.stock_sheet * 10}%" 
-                                     aria-valuenow="${evaluation.stock_sheet}" 
-                                     aria-valuemin="0" 
-                                     aria-valuemax="10"></div>
-                            </div>
-                            <div class="d-flex justify-content-between mt-1">
-                                <small class="text-muted"><?php echo __('score'); ?></small>
-                                <span class="${stockSheetClass} fw-bold">${evaluation.stock_sheet / 10}</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-6 mb-3">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h6 class="card-title"><?php echo __('category_inventory'); ?></h6>
-                            <div class="progress mt-2" style="height: 10px;">
-                                <div class="progress-bar ${getProgressBarClass(evaluation.inventory / 10)}" 
-                                     role="progressbar" 
-                                     style="width: ${evaluation.inventory * 10}%" 
-                                     aria-valuenow="${evaluation.inventory}" 
-                                     aria-valuemin="0" 
-                                     aria-valuemax="10"></div>
-                            </div>
-                            <div class="d-flex justify-content-between mt-1">
-                                <small class="text-muted"><?php echo __('score'); ?></small>
-                                <span class="${inventoryClass} fw-bold">${evaluation.inventory / 10}</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-6 mb-3">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h6 class="card-title"><?php echo __('category_machine_and_team'); ?></h6>
-                            <div class="progress mt-2" style="height: 10px;">
-                                <div class="progress-bar ${getProgressBarClass(evaluation.machine_and_team / 10)}" 
-                                     role="progressbar" 
-                                     style="width: ${evaluation.machine_and_team * 10}%" 
-                                     aria-valuenow="${evaluation.machine_and_team}" 
-                                     aria-valuemin="0" 
-                                     aria-valuemax="10"></div>
-                            </div>
-                            <div class="d-flex justify-content-between mt-1">
-                                <small class="text-muted"><?php echo __('score'); ?></small>
-                                <span class="${machineAndTeamClass} fw-bold">${evaluation.machine_and_team / 10}</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="row">
-                <div class="col-md-6 mb-3">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h6 class="card-title"><?php echo __('category_management'); ?></h6>
-                            <div class="progress mt-2" style="height: 10px;">
-                                <div class="progress-bar ${getProgressBarClass(evaluation.management / 10)}" 
-                                     role="progressbar" 
-                                     style="width: ${evaluation.management * 10}%" 
-                                     aria-valuenow="${evaluation.management}" 
-                                     aria-valuemin="0" 
-                                     aria-valuemax="10"></div>
-                            </div>
-                            <div class="d-flex justify-content-between mt-1">
-                                <small class="text-muted"><?php echo __('score'); ?></small>
-                                <span class="${managementClass} fw-bold">${evaluation.management / 10}</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-6 mb-3">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h6 class="card-title"><?php echo __('category_overall_ranking'); ?></h6>
-                            <div class="progress mt-2" style="height: 10px;">
-                                <div class="progress-bar ${getProgressBarClass(evaluation.ranking / 10)}" 
-                                     role="progressbar" 
-                                     style="width: ${evaluation.ranking * 10}%" 
-                                     aria-valuenow="${evaluation.ranking}" 
-                                     aria-valuemin="0" 
-                                     aria-valuemax="10"></div>
-                            </div>
-                            <div class="d-flex justify-content-between mt-1">
-                                <small class="text-muted"><?php echo __('score'); ?></small>
-                                <span class="${getRatingColorClass(evaluation.ranking / 10)} fw-bold">${evaluation.ranking / 10}</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="card">
-                <div class="card-body">
-                    <h6 class="card-title"><?php echo __('comments_feedback'); ?></h6>
-                    <p class="card-text">${evaluation.comments || '<?php echo __("no_comments"); ?>'}</p>
-                </div>
-            </div>
         `;
         
+        if (evaluation.comments) {
+            html += `
+            <div class="card mb-0">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Comments</h5>
+                </div>
+                <div class="card-body">
+                    ${evaluation.comments}
+                </div>
+            </div>
+            `;
+        }
+        
+        // Display the HTML content
         $('#evaluation-details').html(html);
     }
     
-    // Function to get rating color class
-    function getRatingColorClass(rating) {
-        if (rating >= 8) return 'text-success';
-        if (rating >= 6) return 'text-primary';
-        if (rating >= 4) return 'text-warning';
-        return 'text-danger';
+    // Helper functions for the view modal
+    function getBadgeClassForView(score) {
+        if (score >= 8) return 'bg-success';
+        if (score >= 6) return 'bg-primary';
+        if (score >= 4) return 'bg-warning';
+        return 'bg-danger';
     }
     
-    // Function to get progress bar class
-    function getProgressBarClass(rating) {
-        if (rating >= 8) return 'bg-success';
-        if (rating >= 6) return 'bg-primary';
-        if (rating >= 4) return 'bg-warning';
-        return 'bg-danger';
+    // Helper function to get text color class based on total score
+    function getTotalScoreColorClass(score) {
+        if (score >= 8) return 'text-success';
+        if (score >= 6) return 'text-primary';
+        if (score >= 4) return 'text-warning';
+        return 'text-danger';
     }
 </script>
 

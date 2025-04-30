@@ -33,6 +33,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $conn = new PDO("mysql:host=$dbHost;dbname=$dbName", $dbUser, $dbPass);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         
+        // Calculate bonus amount based on total score
+        $bonusAmount = 0;
+        $bonusStmt = $conn->prepare("SELECT amount FROM total_ranges WHERE ? BETWEEN min_value AND max_value LIMIT 1");
+        $bonusStmt->execute([$totalScore]);
+        $bonusResult = $bonusStmt->fetch(PDO::FETCH_ASSOC);
+        if ($bonusResult) {
+            $bonusAmount = $bonusResult['amount'];
+        }
+        
         // Check if evaluation already exists for this employee and month
         $checkStmt = $conn->prepare("SELECT id FROM employee_evaluations WHERE employee_id = :employee_id AND evaluation_month = :evaluation_month");
         $checkStmt->bindParam(':employee_id', $employeeId);
@@ -52,7 +61,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 stock_sheet = :stock_sheet,
                 inventory = :inventory,
                 machine_and_team = :machine_and_team,
-                total_score = :total_score
+                total_score = :total_score,
+                bonus_amount = :bonus_amount
                 WHERE id = :id
             ");
             
@@ -66,6 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $updateStmt->bindParam(':inventory', $inventory);
             $updateStmt->bindParam(':machine_and_team', $machineAndTeam);
             $updateStmt->bindParam(':total_score', $totalScore);
+            $updateStmt->bindParam(':bonus_amount', $bonusAmount);
             $updateStmt->bindParam(':id', $existingEvaluation['id']);
             
             if ($updateStmt->execute()) {
@@ -94,7 +105,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     stock_sheet,
                     inventory,
                     machine_and_team,
-                    total_score
+                    total_score,
+                    bonus_amount
                 ) VALUES (
                     :id,
                     :employee_id,
@@ -108,7 +120,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     :stock_sheet,
                     :inventory,
                     :machine_and_team,
-                    :total_score
+                    :total_score,
+                    :bonus_amount
                 )
             ");
             
@@ -125,6 +138,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $insertStmt->bindParam(':inventory', $inventory);
             $insertStmt->bindParam(':machine_and_team', $machineAndTeam);
             $insertStmt->bindParam(':total_score', $totalScore);
+            $insertStmt->bindParam(':bonus_amount', $bonusAmount);
             
             if ($insertStmt->execute()) {
                 // Log the evaluation creation
@@ -139,4 +153,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 } else {
     echo json_encode(['success' => false, 'message' => 'Invalid request method']);
-} 
+}

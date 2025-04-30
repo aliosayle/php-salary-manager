@@ -45,6 +45,7 @@ try {
             e.machine_and_team,
             e.management,
             e.total_score,
+            e.bonus_amount,
             e.created_at,
             emp.full_name as employee_name,
             p.title as position,
@@ -66,18 +67,20 @@ try {
     
     $evaluation = $stmt->fetch(PDO::FETCH_ASSOC);
     
-    // Get bonus amount from total_ranges based on total score
-    $bonusStmt = $pdo->prepare("
-        SELECT amount 
-        FROM total_ranges 
-        WHERE ? BETWEEN min_value AND max_value 
-        LIMIT 1
-    ");
-    $bonusStmt->execute([$evaluation['total_score']]);
-    $bonusResult = $bonusStmt->fetch(PDO::FETCH_ASSOC);
-    
-    // Add bonus amount to evaluation data
-    $evaluation['bonus_amount'] = $bonusResult ? $bonusResult['amount'] : 0;
+    // If bonus_amount is not set in database, calculate it from total_ranges based on total score
+    if (empty($evaluation['bonus_amount'])) {
+        $bonusStmt = $pdo->prepare("
+            SELECT amount 
+            FROM total_ranges 
+            WHERE ? BETWEEN min_value AND max_value 
+            LIMIT 1
+        ");
+        $bonusStmt->execute([$evaluation['total_score']]);
+        $bonusResult = $bonusStmt->fetch(PDO::FETCH_ASSOC);
+        
+        // Add bonus amount to evaluation data
+        $evaluation['bonus_amount'] = $bonusResult ? $bonusResult['amount'] : 0;
+    }
     
     echo json_encode([
         'success' => true,
@@ -87,4 +90,4 @@ try {
 } catch (PDOException $e) {
     echo json_encode(['success' => false, 'message' => 'Database error: ' . $e->getMessage()]);
     exit;
-} 
+}

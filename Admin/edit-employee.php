@@ -269,10 +269,10 @@ try {
     <!-- Flatpickr date picker -->
     <link href="assets/libs/flatpickr/flatpickr.min.css" rel="stylesheet" type="text/css">
     
-    <?php include 'layouts/h    <!-- Select2 CSS -->
+    <!-- Select2 CSS -->
     <link href="assets/libs/select2/css/select2.min.css" rel="stylesheet" type="text/css">
     
-ead-style.php'; ?>
+    <?php include 'layouts/head-style.php'; ?>
 </head>
 
 <?php include 'layouts/body.php'; ?>
@@ -517,8 +517,7 @@ ead-style.php'; ?>
 <!-- Flatpickr js -->
 <script src="assets/libs/flatpickr/flatpickr.min.js"></script>
 
-<script>
-    document.add<!-- Select2 js -->
+<!-- Select2 js -->
 <script src="assets/libs/select2/js/select2.min.js"></script>
 
 <script>
@@ -535,7 +534,8 @@ ead-style.php'; ?>
         
         // Initialize select2 for shop selection
         $(".select2-multiple").select2();
-currency input
+        
+        // Format currency input
         document.getElementById('base_salary').addEventListener('blur', function(e) {
             const value = this.value.replace(/,/g, '');
             if (!isNaN(value) && value.trim() !== '') {

@@ -97,10 +97,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["action"]) && $_POST["a
             $machine_and_team = !empty($data['machine_and_team']) ? $data['machine_and_team'] : 0;
             $management = !empty($data['management']) ? $data['management'] : 0;
             $ranking = !empty($data['ranking']) ? $data['ranking'] : 0;
+            $manualBonusAmount = !empty($data['bonus_amount']) ? floatval($data['bonus_amount']) : 0;
             
             // Calculate total score
             $totalScore = $attendance + $cleanliness + $unloading + $sales + 
                           $order_management + $stock_sheet + $inventory + $machine_and_team + $management;
+            
+            // Calculate the bonus amount based on the total score (if not manually set)
+            $bonusAmount = $manualBonusAmount;
+            if ($bonusAmount == 0) {
+                foreach ($ranges as $range) {
+                    if ($totalScore >= $range['min_value'] && $totalScore <= $range['max_value']) {
+                        $bonusAmount = $range['amount'];
+                        break;
+                    }
+                }
+            }
             
             // Verify the employee exists
             $checkEmployeeStmt = $pdo->prepare("SELECT id FROM employees WHERE id = ?");
@@ -126,13 +138,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["action"]) && $_POST["a
                     SET attendance = ?, cleanliness = ?, unloading = ?, 
                         sales = ?, order_management = ?, stock_sheet = ?,
                         inventory = ?, machine_and_team = ?, management = ?, ranking = ?,
-                        total_score = ?
+                        total_score = ?, bonus_amount = ?
                     WHERE id = ?
                 ");
                 $stmt->execute([
                     $attendance, $cleanliness, $unloading, $sales, 
                     $order_management, $stock_sheet, $inventory, $machine_and_team,
-                    $management, $ranking, $totalScore, $evaluationId
+                    $management, $ranking, $totalScore, $bonusAmount, $evaluationId
                 ]);
             } else {
                 // Create new evaluation
@@ -140,8 +152,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["action"]) && $_POST["a
                     INSERT INTO employee_evaluations 
                     (employee_id, evaluation_month, attendance, cleanliness, 
                     unloading, sales, order_management, stock_sheet, inventory,
-                    machine_and_team, management, ranking, total_score) 
-                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                    machine_and_team, management, ranking, total_score, bonus_amount) 
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                 ");
                 
                 // Create evaluation date as the first day of the selected month
@@ -150,7 +162,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["action"]) && $_POST["a
                 $stmt->execute([
                     $employeeId, $evaluationMonth, $attendance, $cleanliness, 
                     $unloading, $sales, $order_management, $stock_sheet,
-                    $inventory, $machine_and_team, $management, $ranking, $totalScore
+                    $inventory, $machine_and_team, $management, $ranking, $totalScore, $bonusAmount
                 ]);
             }
             
@@ -644,6 +656,7 @@ try {
                                                         <th class="score-cell"><?php echo __('management_abbr'); ?></th>
                                                         <th class="score-cell"><?php echo __('ranking_abbr'); ?></th>
                                                         <th class="score-cell"><?php echo __('total'); ?></th>
+                                                        <th class="score-cell"><?php echo __('bonus'); ?> ($)</th>
                                                         <th class="score-cell"><?php echo __('status'); ?></th>
                                                     </tr>
                                                 </thead>
@@ -772,20 +785,19 @@ try {
                                                                         }
                                                                     ?>
                                                                 </span>
-                                                                <?php if (isset($employee['total_score']) && $employee['total_score'] > 0): 
-                                                                    // Find bonus amount
-                                                                    $bonus = 0;
-                                                                    foreach ($ranges as $range) {
-                                                                        if ($employee['total_score'] >= $range['min_value'] && $employee['total_score'] <= $range['max_value']) {
-                                                                            $bonus = $range['amount'];
-                                                                            break;
-                                                                        }
-                                                                    }
-                                                                    if ($bonus > 0):
-                                                                ?>
-                                                                    <span class="badge bg-info" style="font-size: 0.7rem;">$<?php echo number_format($bonus, 0); ?></span>
-                                                                <?php endif; endif; ?>
                                                             </div>
+                                                        </td>
+                                                        
+                                                        <!-- Bonus Amount (can be manually edited) -->
+                                                        <td class="score-cell">
+                                                            <input type="number" class="form-control input-score bonus-input" 
+                                                                   name="evaluations[<?php echo $employee['id']; ?>][bonus_amount]" 
+                                                                   min="0" step="0.01" 
+                                                                   data-employee-id="<?php echo $employee['id']; ?>"
+                                                                   data-field="bonus_amount"
+                                                                   placeholder="Auto"
+                                                                   title="<?php echo __('leave_empty_for_auto'); ?>">
+                                                            <span id="auto-bonus-<?php echo $employee['id']; ?>" class="auto-bonus d-none"></span>
                                                         </td>
                                                         
                                                         <!-- Status -->
@@ -893,9 +905,9 @@ try {
         function calculateTotalScore(employeeId) {
             var total = 0;
             
-            // Add up all scores except ranking
+            // Add up all scores except ranking and bonus_amount
             $('input[data-employee-id="' + employeeId + '"]').each(function() {
-                if ($(this).data('field') !== 'ranking') {
+                if ($(this).data('field') !== 'ranking' && $(this).data('field') !== 'bonus_amount') {
                     var val = parseInt($(this).val()) || 0;
                     total += val;
                 }
@@ -904,12 +916,40 @@ try {
             // Update total display
             $('#total-' + employeeId).text(total);
             
+            // Calculate and update bonus amount
+            calculateBonusAmount(employeeId, total);
+            
             // Update status based on total
             if (total > 0) {
                 $('#status-' + employeeId).html('<span class="badge bg-success"><?php echo __("evaluated"); ?></span>');
             } else {
                 $('#status-' + employeeId).html('<span class="badge bg-warning"><?php echo __("pending"); ?></span>');
             }
+        }
+        
+        // Calculate the automatic bonus amount based on the total score
+        function calculateBonusAmount(employeeId, totalScore) {
+            // Get the ranges from PHP
+            var ranges = <?php echo json_encode($ranges); ?>;
+            var bonus = 0;
+            
+            // Find matching range and get the amount
+            for (var i = 0; i < ranges.length; i++) {
+                var range = ranges[i];
+                if (totalScore >= range.min_value && totalScore <= range.max_value) {
+                    bonus = range.amount;
+                    break;
+                }
+            }
+            
+            // Store the automatic bonus for reference
+            $('#auto-bonus-' + employeeId).text(bonus.toFixed(2));
+            
+            // Update placeholder to show the automatic amount
+            $('input[data-employee-id="' + employeeId + '"][data-field="bonus_amount"]')
+                .attr('placeholder', bonus.toFixed(2));
+            
+            return bonus;
         }
     });
 </script>

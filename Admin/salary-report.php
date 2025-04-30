@@ -202,8 +202,21 @@ try {
         $evaluationBonus = 0;
         $evalScore = $manager['evaluation_score'] ?? 0;
         
-        // Query the total_ranges table to find the corresponding amount for this score
-        if ($evalScore > 0) {
+        // Check if there's a stored bonus_amount first (new way)
+        $evalBonusStmt = $pdo->prepare("
+            SELECT bonus_amount FROM employee_evaluations 
+            WHERE employee_id = ? AND MONTH(evaluation_month) = ? AND YEAR(evaluation_month) = ?
+            LIMIT 1
+        ");
+        $evalBonusStmt->execute([$manager['manager_id'], $selectedMonth, $selectedYear]);
+        $evalBonusResult = $evalBonusStmt->fetch(PDO::FETCH_ASSOC);
+        
+        if ($evalBonusResult && !empty($evalBonusResult['bonus_amount'])) {
+            // Use the stored bonus amount
+            $evaluationBonus = $evalBonusResult['bonus_amount'];
+        } 
+        else if ($evalScore > 0) {
+            // Fallback to calculating from score (old way)
             $evalBonusStmt = $pdo->prepare("
                 SELECT amount FROM total_ranges 
                 WHERE ? BETWEEN min_value AND max_value
