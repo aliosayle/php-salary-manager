@@ -989,3 +989,644 @@
 )
 
 [30-Apr-2025 09:28:30 UTC] Session valid for user: admin
+[30-Apr-2025 09:36:48 UTC] Session check started. URI: /salarymanager/Admin/batch-evaluations.php?month=4&year=2025
+[30-Apr-2025 09:36:48 UTC] Session data: Array
+(
+    [lang] => en
+    [loggedin] => 1
+    [user_id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [name] => admin
+    [username] => admin
+    [email] => admin@example.com
+    [role_id] => 7119b17b-1aa6-11f0-99a1-cc28aa53b74d
+    [last_activity] => 1745831229
+    [permissions] => Array
+        (
+            [0] => view_dashboard
+            [1] => manage_users
+            [2] => manage_roles
+            [3] => view_employees
+            [4] => manage_employees
+            [5] => view_education
+            [6] => manage_education
+            [7] => view_posts
+            [8] => manage_posts
+            [9] => generate_reports
+        )
+
+)
+
+[30-Apr-2025 09:36:48 UTC] Session valid for user: admin
+[30-Apr-2025 09:36:55 UTC] Session check started. URI: /salarymanager/Admin/batch-evaluations.php?month=4&year=2025
+[30-Apr-2025 09:36:55 UTC] Session data: Array
+(
+    [lang] => en
+    [loggedin] => 1
+    [user_id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [name] => admin
+    [username] => admin
+    [email] => admin@example.com
+    [role_id] => 7119b17b-1aa6-11f0-99a1-cc28aa53b74d
+    [last_activity] => 1745831229
+    [permissions] => Array
+        (
+            [0] => view_dashboard
+            [1] => manage_users
+            [2] => manage_roles
+            [3] => view_employees
+            [4] => manage_employees
+            [5] => view_education
+            [6] => manage_education
+            [7] => view_posts
+            [8] => manage_posts
+            [9] => generate_reports
+        )
+
+)
+
+[30-Apr-2025 09:36:55 UTC] Session valid for user: admin
+[30-Apr-2025 09:37:01 UTC] Session check started. URI: /salarymanager/Admin/assistant-managers-batch-evaluations.php
+[30-Apr-2025 09:37:01 UTC] Session data: Array
+(
+    [lang] => en
+    [loggedin] => 1
+    [user_id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [name] => admin
+    [username] => admin
+    [email] => admin@example.com
+    [role_id] => 7119b17b-1aa6-11f0-99a1-cc28aa53b74d
+    [last_activity] => 1745831229
+    [permissions] => Array
+        (
+            [0] => view_dashboard
+            [1] => manage_users
+            [2] => manage_roles
+            [3] => view_employees
+            [4] => manage_employees
+            [5] => view_education
+            [6] => manage_education
+            [7] => view_posts
+            [8] => manage_posts
+            [9] => generate_reports
+        )
+
+)
+
+[30-Apr-2025 09:37:01 UTC] Session valid for user: admin
+[30-Apr-2025 09:37:01 UTC] Error checking if month is open: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salarymanager.open_months' doesn't exist
+[30-Apr-2025 09:37:11 UTC] Session check started. URI: /salarymanager/Admin/shop-employees.php
+[30-Apr-2025 09:37:11 UTC] Session data: Array
+(
+    [lang] => en
+    [loggedin] => 1
+    [user_id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [name] => admin
+    [username] => admin
+    [email] => admin@example.com
+    [role_id] => 7119b17b-1aa6-11f0-99a1-cc28aa53b74d
+    [last_activity] => 1745831229
+    [permissions] => Array
+        (
+            [0] => view_dashboard
+            [1] => manage_users
+            [2] => manage_roles
+            [3] => view_employees
+            [4] => manage_employees
+            [5] => view_education
+            [6] => manage_education
+            [7] => view_posts
+            [8] => manage_posts
+            [9] => generate_reports
+        )
+
+)
+
+[30-Apr-2025 09:37:11 UTC] Session valid for user: admin
+[30-Apr-2025 09:37:13 UTC] Session check started. URI: /salarymanager/Admin/shops.php
+[30-Apr-2025 09:37:13 UTC] Session data: Array
+(
+    [lang] => en
+    [loggedin] => 1
+    [user_id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [name] => admin
+    [username] => admin
+    [email] => admin@example.com
+    [role_id] => 7119b17b-1aa6-11f0-99a1-cc28aa53b74d
+    [last_activity] => 1745831229
+    [permissions] => Array
+        (
+            [0] => view_dashboard
+            [1] => manage_users
+            [2] => manage_roles
+            [3] => view_employees
+            [4] => manage_employees
+            [5] => view_education
+            [6] => manage_education
+            [7] => view_posts
+            [8] => manage_posts
+            [9] => generate_reports
+        )
+
+    [error] => Shop ID is required
+)
+
+[30-Apr-2025 09:37:13 UTC] Session valid for user: admin
+[30-Apr-2025 11:37:28 Europe/Berlin] Currencies.php - Page load started
+[30-Apr-2025 09:37:32 UTC] Error checking permissions: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salarymanager.permissions_per_role' doesn't exist
+[30-Apr-2025 09:37:32 UTC] Currencies.php - User doesn't have permission to view currencies
+[30-Apr-2025 09:37:42 UTC] Session check started. URI: /salarymanager/Admin/salary-report.php
+[30-Apr-2025 09:37:42 UTC] Session data: Array
+(
+    [lang] => en
+    [loggedin] => 1
+    [user_id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [name] => admin
+    [username] => admin
+    [email] => admin@example.com
+    [role_id] => 7119b17b-1aa6-11f0-99a1-cc28aa53b74d
+    [last_activity] => 1745831229
+    [permissions] => Array
+        (
+            [0] => view_dashboard
+            [1] => manage_users
+            [2] => manage_roles
+            [3] => view_employees
+            [4] => manage_employees
+            [5] => view_education
+            [6] => manage_education
+            [7] => view_posts
+            [8] => manage_posts
+            [9] => generate_reports
+        )
+
+    [error] => Shop ID is required
+)
+
+[30-Apr-2025 09:37:42 UTC] Session valid for user: admin
+[30-Apr-2025 09:38:04 UTC] Session check started. URI: /salarymanager/Admin/assistant-manager-salary-report.php
+[30-Apr-2025 09:38:04 UTC] Session data: Array
+(
+    [lang] => en
+    [loggedin] => 1
+    [user_id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [name] => admin
+    [username] => admin
+    [email] => admin@example.com
+    [role_id] => 7119b17b-1aa6-11f0-99a1-cc28aa53b74d
+    [last_activity] => 1745831229
+    [permissions] => Array
+        (
+            [0] => view_dashboard
+            [1] => manage_users
+            [2] => manage_roles
+            [3] => view_employees
+            [4] => manage_employees
+            [5] => view_education
+            [6] => manage_education
+            [7] => view_posts
+            [8] => manage_posts
+            [9] => generate_reports
+        )
+
+    [error] => Shop ID is required
+)
+
+[30-Apr-2025 09:38:04 UTC] Session valid for user: admin
+[30-Apr-2025 09:38:10 UTC] Session check started. URI: /salarymanager/Admin/store-management-report.php
+[30-Apr-2025 09:38:10 UTC] Session data: Array
+(
+    [lang] => en
+    [loggedin] => 1
+    [user_id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [name] => admin
+    [username] => admin
+    [email] => admin@example.com
+    [role_id] => 7119b17b-1aa6-11f0-99a1-cc28aa53b74d
+    [last_activity] => 1745831229
+    [permissions] => Array
+        (
+            [0] => view_dashboard
+            [1] => manage_users
+            [2] => manage_roles
+            [3] => view_employees
+            [4] => manage_employees
+            [5] => view_education
+            [6] => manage_education
+            [7] => view_posts
+            [8] => manage_posts
+            [9] => generate_reports
+        )
+
+    [error] => Shop ID is required
+)
+
+[30-Apr-2025 09:38:10 UTC] Session valid for user: admin
+[30-Apr-2025 09:38:10 UTC] store-management-report.php - Successfully fetched 79 shops from live data
+[30-Apr-2025 09:41:25 UTC] Session check started. URI: /salarymanager/Admin/store-management-report.php
+[30-Apr-2025 09:41:25 UTC] Session data: Array
+(
+    [lang] => en
+    [loggedin] => 1
+    [user_id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [name] => admin
+    [username] => admin
+    [email] => admin@example.com
+    [role_id] => 7119b17b-1aa6-11f0-99a1-cc28aa53b74d
+    [last_activity] => 1745831229
+    [permissions] => Array
+        (
+            [0] => view_dashboard
+            [1] => manage_users
+            [2] => manage_roles
+            [3] => view_employees
+            [4] => manage_employees
+            [5] => view_education
+            [6] => manage_education
+            [7] => view_posts
+            [8] => manage_posts
+            [9] => generate_reports
+        )
+
+    [error] => Shop ID is required
+)
+
+[30-Apr-2025 09:41:25 UTC] Session valid for user: admin
+[30-Apr-2025 09:41:25 UTC] store-management-report.php - Successfully fetched 79 shops from live data
+[30-Apr-2025 09:41:34 UTC] Session check started. URI: /salarymanager/Admin/store-management-report.php
+[30-Apr-2025 09:41:34 UTC] Session data: Array
+(
+    [lang] => en
+    [loggedin] => 1
+    [user_id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [name] => admin
+    [username] => admin
+    [email] => admin@example.com
+    [role_id] => 7119b17b-1aa6-11f0-99a1-cc28aa53b74d
+    [last_activity] => 1745831229
+    [permissions] => Array
+        (
+            [0] => view_dashboard
+            [1] => manage_users
+            [2] => manage_roles
+            [3] => view_employees
+            [4] => manage_employees
+            [5] => view_education
+            [6] => manage_education
+            [7] => view_posts
+            [8] => manage_posts
+            [9] => generate_reports
+        )
+
+    [error] => Shop ID is required
+)
+
+[30-Apr-2025 09:41:34 UTC] Session valid for user: admin
+[30-Apr-2025 09:41:34 UTC] store-management-report.php - Successfully fetched 79 shops from live data
+[30-Apr-2025 09:46:03 UTC] Session check started. URI: /salarymanager/Admin/store-management-report.php
+[30-Apr-2025 09:46:03 UTC] Session data: Array
+(
+    [lang] => en
+    [loggedin] => 1
+    [user_id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [name] => admin
+    [username] => admin
+    [email] => admin@example.com
+    [role_id] => 7119b17b-1aa6-11f0-99a1-cc28aa53b74d
+    [last_activity] => 1745831229
+    [permissions] => Array
+        (
+            [0] => view_dashboard
+            [1] => manage_users
+            [2] => manage_roles
+            [3] => view_employees
+            [4] => manage_employees
+            [5] => view_education
+            [6] => manage_education
+            [7] => view_posts
+            [8] => manage_posts
+            [9] => generate_reports
+        )
+
+    [error] => Shop ID is required
+)
+
+[30-Apr-2025 09:46:03 UTC] Session valid for user: admin
+[30-Apr-2025 09:46:03 UTC] PHP Parse error:  syntax error, unexpected identifier "en", expecting "]" in C:\xampp\htdocs\salarymanager\Admin\layouts\translations.php on line 1283
+[30-Apr-2025 09:47:40 UTC] Session check started. URI: /salarymanager/Admin/store-management-report.php
+[30-Apr-2025 09:47:40 UTC] Session data: Array
+(
+    [lang] => en
+    [loggedin] => 1
+    [user_id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [name] => admin
+    [username] => admin
+    [email] => admin@example.com
+    [role_id] => 7119b17b-1aa6-11f0-99a1-cc28aa53b74d
+    [last_activity] => 1745831229
+    [permissions] => Array
+        (
+            [0] => view_dashboard
+            [1] => manage_users
+            [2] => manage_roles
+            [3] => view_employees
+            [4] => manage_employees
+            [5] => view_education
+            [6] => manage_education
+            [7] => view_posts
+            [8] => manage_posts
+            [9] => generate_reports
+        )
+
+    [error] => Shop ID is required
+)
+
+[30-Apr-2025 09:47:40 UTC] Session valid for user: admin
+[30-Apr-2025 09:47:40 UTC] PHP Parse error:  syntax error, unexpected identifier "en", expecting "]" in C:\xampp\htdocs\salarymanager\Admin\layouts\translations.php on line 1283
+[30-Apr-2025 09:47:46 UTC] Session check started. URI: /salarymanager/Admin/assistant-manager-salary-report.php
+[30-Apr-2025 09:47:46 UTC] Session data: Array
+(
+    [lang] => en
+    [loggedin] => 1
+    [user_id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [name] => admin
+    [username] => admin
+    [email] => admin@example.com
+    [role_id] => 7119b17b-1aa6-11f0-99a1-cc28aa53b74d
+    [last_activity] => 1745831229
+    [permissions] => Array
+        (
+            [0] => view_dashboard
+            [1] => manage_users
+            [2] => manage_roles
+            [3] => view_employees
+            [4] => manage_employees
+            [5] => view_education
+            [6] => manage_education
+            [7] => view_posts
+            [8] => manage_posts
+            [9] => generate_reports
+        )
+
+    [error] => Shop ID is required
+)
+
+[30-Apr-2025 09:47:46 UTC] Session valid for user: admin
+[30-Apr-2025 09:47:46 UTC] PHP Parse error:  syntax error, unexpected identifier "en", expecting "]" in C:\xampp\htdocs\salarymanager\Admin\layouts\translations.php on line 1283
+[30-Apr-2025 09:47:49 UTC] Session check started. URI: /salarymanager/Admin/salary-report.php
+[30-Apr-2025 09:47:49 UTC] Session data: Array
+(
+    [lang] => en
+    [loggedin] => 1
+    [user_id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [name] => admin
+    [username] => admin
+    [email] => admin@example.com
+    [role_id] => 7119b17b-1aa6-11f0-99a1-cc28aa53b74d
+    [last_activity] => 1745831229
+    [permissions] => Array
+        (
+            [0] => view_dashboard
+            [1] => manage_users
+            [2] => manage_roles
+            [3] => view_employees
+            [4] => manage_employees
+            [5] => view_education
+            [6] => manage_education
+            [7] => view_posts
+            [8] => manage_posts
+            [9] => generate_reports
+        )
+
+    [error] => Shop ID is required
+)
+
+[30-Apr-2025 09:47:49 UTC] Session valid for user: admin
+[30-Apr-2025 09:47:49 UTC] PHP Parse error:  syntax error, unexpected identifier "en", expecting "]" in C:\xampp\htdocs\salarymanager\Admin\layouts\translations.php on line 1283
+[30-Apr-2025 09:52:04 UTC] Session check started. URI: /salarymanager/Admin/salary-report.php
+[30-Apr-2025 09:52:04 UTC] Session data: Array
+(
+    [lang] => en
+    [loggedin] => 1
+    [user_id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [name] => admin
+    [username] => admin
+    [email] => admin@example.com
+    [role_id] => 7119b17b-1aa6-11f0-99a1-cc28aa53b74d
+    [last_activity] => 1745831229
+    [permissions] => Array
+        (
+            [0] => view_dashboard
+            [1] => manage_users
+            [2] => manage_roles
+            [3] => view_employees
+            [4] => manage_employees
+            [5] => view_education
+            [6] => manage_education
+            [7] => view_posts
+            [8] => manage_posts
+            [9] => generate_reports
+        )
+
+    [error] => Shop ID is required
+)
+
+[30-Apr-2025 09:52:04 UTC] Session valid for user: admin
+[30-Apr-2025 09:52:04 UTC] PHP Parse error:  syntax error, unexpected identifier "en", expecting "]" in C:\xampp\htdocs\salarymanager\Admin\layouts\translations.php on line 1277
+[30-Apr-2025 10:07:02 UTC] Session check started. URI: /salarymanager/Admin/salary-report.php
+[30-Apr-2025 10:07:02 UTC] Session data: Array
+(
+    [lang] => en
+    [loggedin] => 1
+    [user_id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [name] => admin
+    [username] => admin
+    [email] => admin@example.com
+    [role_id] => 7119b17b-1aa6-11f0-99a1-cc28aa53b74d
+    [last_activity] => 1745831229
+    [permissions] => Array
+        (
+            [0] => view_dashboard
+            [1] => manage_users
+            [2] => manage_roles
+            [3] => view_employees
+            [4] => manage_employees
+            [5] => view_education
+            [6] => manage_education
+            [7] => view_posts
+            [8] => manage_posts
+            [9] => generate_reports
+        )
+
+    [error] => Shop ID is required
+)
+
+[30-Apr-2025 10:07:02 UTC] Session valid for user: admin
+[30-Apr-2025 10:07:02 UTC] PHP Parse error:  syntax error, unexpected identifier "en", expecting "]" in C:\xampp\htdocs\salarymanager\Admin\layouts\translations.php on line 1277
+[30-Apr-2025 10:07:07 UTC] Session check started. URI: /salarymanager/Admin/salary-report.php
+[30-Apr-2025 10:07:07 UTC] Session data: Array
+(
+    [lang] => en
+    [loggedin] => 1
+    [user_id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [name] => admin
+    [username] => admin
+    [email] => admin@example.com
+    [role_id] => 7119b17b-1aa6-11f0-99a1-cc28aa53b74d
+    [last_activity] => 1745831229
+    [permissions] => Array
+        (
+            [0] => view_dashboard
+            [1] => manage_users
+            [2] => manage_roles
+            [3] => view_employees
+            [4] => manage_employees
+            [5] => view_education
+            [6] => manage_education
+            [7] => view_posts
+            [8] => manage_posts
+            [9] => generate_reports
+        )
+
+    [error] => Shop ID is required
+)
+
+[30-Apr-2025 10:07:07 UTC] Session valid for user: admin
+[30-Apr-2025 10:07:07 UTC] PHP Parse error:  syntax error, unexpected identifier "en", expecting "]" in C:\xampp\htdocs\salarymanager\Admin\layouts\translations.php on line 1277
+[30-Apr-2025 10:07:19 UTC] Session check started. URI: /salarymanager/Admin/salary-report.php
+[30-Apr-2025 10:07:19 UTC] Session data: Array
+(
+    [lang] => en
+    [loggedin] => 1
+    [user_id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [name] => admin
+    [username] => admin
+    [email] => admin@example.com
+    [role_id] => 7119b17b-1aa6-11f0-99a1-cc28aa53b74d
+    [last_activity] => 1745831229
+    [permissions] => Array
+        (
+            [0] => view_dashboard
+            [1] => manage_users
+            [2] => manage_roles
+            [3] => view_employees
+            [4] => manage_employees
+            [5] => view_education
+            [6] => manage_education
+            [7] => view_posts
+            [8] => manage_posts
+            [9] => generate_reports
+        )
+
+    [error] => Shop ID is required
+)
+
+[30-Apr-2025 10:07:19 UTC] Session valid for user: admin
+[30-Apr-2025 10:07:19 UTC] PHP Parse error:  syntax error, unexpected identifier "en", expecting "]" in C:\xampp\htdocs\salarymanager\Admin\layouts\translations.php on line 1283
+[30-Apr-2025 10:07:26 UTC] Session check started. URI: /salarymanager/Admin/salary-report.php
+[30-Apr-2025 10:07:26 UTC] Session data: Array
+(
+    [lang] => en
+    [loggedin] => 1
+    [user_id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [name] => admin
+    [username] => admin
+    [email] => admin@example.com
+    [role_id] => 7119b17b-1aa6-11f0-99a1-cc28aa53b74d
+    [last_activity] => 1745831229
+    [permissions] => Array
+        (
+            [0] => view_dashboard
+            [1] => manage_users
+            [2] => manage_roles
+            [3] => view_employees
+            [4] => manage_employees
+            [5] => view_education
+            [6] => manage_education
+            [7] => view_posts
+            [8] => manage_posts
+            [9] => generate_reports
+        )
+
+    [error] => Shop ID is required
+)
+
+[30-Apr-2025 10:07:26 UTC] Session valid for user: admin
+[30-Apr-2025 10:11:19 UTC] Session check started. URI: /salarymanager/Admin/salary-report.php
+[30-Apr-2025 10:11:19 UTC] Session data: Array
+(
+    [lang] => en
+    [loggedin] => 1
+    [user_id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [name] => admin
+    [username] => admin
+    [email] => admin@example.com
+    [role_id] => 7119b17b-1aa6-11f0-99a1-cc28aa53b74d
+    [last_activity] => 1745831229
+    [permissions] => Array
+        (
+            [0] => view_dashboard
+            [1] => manage_users
+            [2] => manage_roles
+            [3] => view_employees
+            [4] => manage_employees
+            [5] => view_education
+            [6] => manage_education
+            [7] => view_posts
+            [8] => manage_posts
+            [9] => generate_reports
+        )
+
+    [error] => Shop ID is required
+)
+
+[30-Apr-2025 10:11:19 UTC] Session valid for user: admin
+[30-Apr-2025 10:11:39 UTC] Session check started. URI: /salarymanager/Admin/salary-report.php
+[30-Apr-2025 10:11:39 UTC] Session data: Array
+(
+    [lang] => fr
+    [loggedin] => 1
+    [user_id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [name] => admin
+    [username] => admin
+    [email] => admin@example.com
+    [role_id] => 7119b17b-1aa6-11f0-99a1-cc28aa53b74d
+    [last_activity] => 1745831229
+    [permissions] => Array
+        (
+            [0] => view_dashboard
+            [1] => manage_users
+            [2] => manage_roles
+            [3] => view_employees
+            [4] => manage_employees
+            [5] => view_education
+            [6] => manage_education
+            [7] => view_posts
+            [8] => manage_posts
+            [9] => generate_reports
+        )
+
+    [error] => Shop ID is required
+)
+
+[30-Apr-2025 10:11:39 UTC] Session valid for user: admin
