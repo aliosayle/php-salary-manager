@@ -275,6 +275,33 @@ try {
         $manager['net_salary'] = $netSalary;
     }
     
+    // Calculate totals for all numeric columns
+    $totals = [
+        'base_salary' => 0,
+        'sales_bonus' => 0,
+        'evaluation_bonus' => 0,
+        'paid_leave' => 0,
+        'years_bonus' => 0,
+        'inventory_shortage' => 0,
+        'salary_advance' => 0,
+        'sanctions' => 0,
+        'register_difference' => 0,
+        'net_salary' => 0
+    ];
+    
+    foreach ($managers as $manager) {
+        $totals['base_salary'] += $manager['base_salary'];
+        $totals['sales_bonus'] += $manager['sales_bonus'];
+        $totals['evaluation_bonus'] += $manager['evaluation_bonus'];
+        $totals['paid_leave'] += $manager['paid_leave'];
+        $totals['years_bonus'] += $manager['years_bonus'];
+        $totals['inventory_shortage'] += $manager['inventory_shortage'];
+        $totals['salary_advance'] += $manager['salary_advance'];
+        $totals['sanctions'] += $manager['sanctions'];
+        $totals['register_difference'] += $manager['register_difference'];
+        $totals['net_salary'] += $manager['net_salary'];
+    }
+    
 } catch (PDOException $e) {
     error_log("salary-report.php - Database error: " . $e->getMessage());
     $errors[] = "Database error: " . $e->getMessage();
@@ -589,8 +616,26 @@ $page_description = $_SESSION['lang'] == 'fr' ? 'Calcul des salaires pour les g√
                                                         <td class="signature-cell"></td>
                                                     </tr>
                                                 <?php endforeach; ?>
+                                                <!-- Removed totals row from HTML display -->
                                             <?php endif; ?>
                                         </tbody>
+                                        <!-- Store totals in hidden element for DataTables export -->
+                                        <tfoot class="d-none">
+                                            <tr>
+                                                <td colspan="2" class="text-end"><strong><?php echo $_SESSION['lang'] == 'fr' ? 'Totaux' : 'Totals'; ?></strong></td>
+                                                <td class="currency"><strong><?php echo number_format($totals['base_salary'], 2); ?></strong></td>
+                                                <td class="currency"><strong><?php echo number_format($totals['sales_bonus'], 2); ?></strong></td>
+                                                <td class="currency"><strong><?php echo number_format($totals['evaluation_bonus'], 2); ?></strong></td>
+                                                <td class="currency"><strong><?php echo number_format($totals['paid_leave'], 2); ?></strong></td>
+                                                <td class="currency"><strong><?php echo number_format($totals['years_bonus'], 2); ?></strong></td>
+                                                <td class="currency"><strong><?php echo number_format($totals['inventory_shortage'], 2); ?></strong></td>
+                                                <td class="currency"><strong><?php echo number_format($totals['salary_advance'], 2); ?></strong></td>
+                                                <td class="currency"><strong><?php echo number_format($totals['sanctions'], 2); ?></strong></td>
+                                                <td class="currency"><strong><?php echo number_format($totals['register_difference'], 2); ?></strong></td>
+                                                <td class="currency"><strong><?php echo number_format($totals['net_salary'], 2); ?></strong></td>
+                                                <td></td>
+                                            </tr>
+                                        </tfoot>
                                     </table>
                                 </div>
                             </div>
@@ -630,7 +675,7 @@ $page_description = $_SESSION['lang'] == 'fr' ? 'Calcul des salaires pour les g√
 <!-- Datatable init js -->
 <script>
     $(document).ready(function() {
-        // Initialize DataTable with export options
+        // Basic DataTable initialization - simplified to avoid columns mismatch errors
         var dataTable = $('#salary-table').DataTable({
             dom: 'Bfrtip',
             buttons: [
@@ -640,8 +685,9 @@ $page_description = $_SESSION['lang'] == 'fr' ? 'Calcul des salaires pour les g√
                         ? 'SALAIRES GERANTS ET AIDES GERANTS IBA FER ' . strtoupper($month_names[$selectedMonth]) . ' ' . $selectedYear
                         : 'MANAGER AND ASSISTANT MANAGER SALARIES REPORT ' . strtoupper($month_names[$selectedMonth]) . ' ' . $selectedYear; ?>',
                     className: 'btn btn-sm btn-success d-none excel-export-btn',
+                    footer: true,
                     exportOptions: {
-                        columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+                        columns: ':not(:last-child)'
                     }
                 },
                 {
@@ -652,8 +698,31 @@ $page_description = $_SESSION['lang'] == 'fr' ? 'Calcul des salaires pour les g√
                     orientation: 'landscape',
                     pageSize: 'LEGAL',
                     className: 'btn btn-sm btn-danger d-none pdf-export-btn',
+                    footer: true,
                     exportOptions: {
-                        columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+                        columns: ':not(:last-child)'
+                    },
+                    customize: function(doc) {
+                        // Add footer with total amount
+                        var now = new Date();
+                        var jsDate = now.getDate() + '/' + (now.getMonth() + 1) + '/' + now.getFullYear();
+                        doc.footer = function(page, pages) {
+                            return {
+                                columns: [
+                                    {
+                                        text: '<?php echo $_SESSION["lang"] == "fr" ? "Date d\'exportation" : "Export Date"; ?>: ' + jsDate,
+                                        alignment: 'left',
+                                        margin: [40, 0]
+                                    },
+                                    { 
+                                        text: '<?php echo $_SESSION["lang"] == "fr" ? "Total des salaires nets" : "Total Net Salary"; ?>: <?php echo number_format($totals["net_salary"], 2); ?>',
+                                        alignment: 'right',
+                                        margin: [0, 0, 40, 0]
+                                    }
+                                ],
+                                margin: [40, 0]
+                            };
+                        };
                     }
                 },
                 {
@@ -662,14 +731,31 @@ $page_description = $_SESSION['lang'] == 'fr' ? 'Calcul des salaires pour les g√
                         ? 'SALAIRES GERANTS ET AIDES GERANTS IBA FER ' . strtoupper($month_names[$selectedMonth]) . ' ' . $selectedYear
                         : 'MANAGER AND ASSISTANT MANAGER SALARIES REPORT ' . strtoupper($month_names[$selectedMonth]) . ' ' . $selectedYear; ?>',
                     className: 'btn btn-sm btn-info d-none print-export-btn',
+                    footer: true,
                     exportOptions: {
-                        columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+                        columns: ':not(:last-child)'
                     },
                     customize: function(win) {
                         $(win.document.body).find('table').addClass('display').css('font-size', '12px');
-                        $(win.document.body).find('table thead th').css('text-align', 'center');
-                        $(win.document.body).find('table thead th').css('background-color', '#f8f9fa');
-                        $(win.document.body).find('table thead th').css('font-weight', 'bold');
+                        $(win.document.body).find('table thead th').css({
+                            'text-align': 'center',
+                            'background-color': '#f8f9fa',
+                            'font-weight': 'bold'
+                        });
+                        
+                        // Style footer (totals row)
+                        $(win.document.body).find('table tfoot tr').css({
+                            'background-color': '#f2f2f2',
+                            'font-weight': 'bold'
+                        });
+                        
+                        // Add a summary of totals at the bottom
+                        $(win.document.body).append(
+                            '<div style="text-align: right; margin-top: 20px; padding-right: 20px; font-weight: bold;">' +
+                            '<?php echo $_SESSION['lang'] == 'fr' ? 'Total des salaires nets' : 'Total Net Salary'; ?>: ' +
+                            '<?php echo number_format($totals["net_salary"], 2); ?>' +
+                            '</div>'
+                        );
                     }
                 }
             ],

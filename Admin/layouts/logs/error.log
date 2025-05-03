@@ -1630,3 +1630,323 @@
 )
 
 [30-Apr-2025 10:11:39 UTC] Session valid for user: admin
+[30-Apr-2025 10:45:53 UTC] Session check started. URI: /salarymanager/Admin/salary-report.php
+[30-Apr-2025 10:45:53 UTC] Session data: Array
+(
+    [lang] => en
+    [loggedin] => 1
+    [user_id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [name] => admin
+    [username] => admin
+    [email] => admin@example.com
+    [role_id] => 7119b17b-1aa6-11f0-99a1-cc28aa53b74d
+    [last_activity] => 1745831229
+    [permissions] => Array
+        (
+            [0] => view_dashboard
+            [1] => manage_users
+            [2] => manage_roles
+            [3] => view_employees
+            [4] => manage_employees
+            [5] => view_education
+            [6] => manage_education
+            [7] => view_posts
+            [8] => manage_posts
+            [9] => generate_reports
+        )
+
+    [error] => Shop ID is required
+)
+
+[30-Apr-2025 10:45:53 UTC] Session valid for user: admin
+[30-Apr-2025 12:49:03 Europe/Berlin] Monthly-sales.php - Page load started
+[30-Apr-2025 10:49:05 UTC] Session check started. URI: /salarymanager/Admin/monthly-sales.php
+[30-Apr-2025 10:49:05 UTC] Session data: Array
+(
+    [lang] => en
+    [loggedin] => 1
+    [user_id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [name] => admin
+    [username] => admin
+    [email] => admin@example.com
+    [role_id] => 7119b17b-1aa6-11f0-99a1-cc28aa53b74d
+    [last_activity] => 1745831229
+    [permissions] => Array
+        (
+            [0] => view_dashboard
+            [1] => manage_users
+            [2] => manage_roles
+            [3] => view_employees
+            [4] => manage_employees
+            [5] => view_education
+            [6] => manage_education
+            [7] => view_posts
+            [8] => manage_posts
+            [9] => generate_reports
+        )
+
+    [error] => Shop ID is required
+)
+
+[30-Apr-2025 10:49:05 UTC] Session valid for user: admin
+[30-Apr-2025 10:49:05 UTC] Monthly-sales.php - Successfully fetched 9 open months
+[30-Apr-2025 10:49:05 UTC] Monthly-sales.php - Successfully fetched 79 shops
+[30-Apr-2025 10:49:05 UTC] Monthly-sales.php - Successfully fetched 2 bonus tiers
+[30-Apr-2025 10:49:05 UTC] Monthly-sales.php - Executing shop sales query with params: {":default_month":4,":default_year":2025,":selected_month":4,":selected_year":2025}
+[30-Apr-2025 10:49:05 UTC] Monthly-sales.php - Successfully fetched 79 shop sales records
+[30-Apr-2025 14:32:22 Europe/Berlin] Monthly-sales.php - Page load started
+[30-Apr-2025 12:32:24 UTC] Session check started. URI: /salarymanager/Admin/monthly-sales.php
+[30-Apr-2025 12:32:24 UTC] Session data: Array
+(
+    [lang] => en
+    [loggedin] => 1
+    [user_id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [name] => admin
+    [username] => admin
+    [email] => admin@example.com
+    [role_id] => 7119b17b-1aa6-11f0-99a1-cc28aa53b74d
+    [last_activity] => 1745831229
+    [permissions] => Array
+        (
+            [0] => view_dashboard
+            [1] => manage_users
+            [2] => manage_roles
+            [3] => view_employees
+            [4] => manage_employees
+            [5] => view_education
+            [6] => manage_education
+            [7] => view_posts
+            [8] => manage_posts
+            [9] => generate_reports
+        )
+
+    [error] => Shop ID is required
+)
+
+[30-Apr-2025 12:32:24 UTC] Session valid for user: admin
+[30-Apr-2025 12:32:24 UTC] Monthly-sales.php - Successfully fetched 9 open months
+[30-Apr-2025 12:32:24 UTC] Monthly-sales.php - Successfully fetched 79 shops
+[30-Apr-2025 12:32:24 UTC] Monthly-sales.php - Successfully fetched 2 bonus tiers
+[30-Apr-2025 12:32:24 UTC] Monthly-sales.php - Executing shop sales query with params: {":default_month":4,":default_year":2025,":selected_month":4,":selected_year":2025}
+[30-Apr-2025 12:32:24 UTC] Monthly-sales.php - Successfully fetched 79 shop sales records
+[30-Apr-2025 15:03:17 Europe/Berlin] Monthly-sales.php - Page load started
+[30-Apr-2025 13:03:19 UTC] Session check started. URI: /salarymanager/Admin/monthly-sales.php
+[30-Apr-2025 13:03:19 UTC] Session data: Array
+(
+    [lang] => en
+    [loggedin] => 1
+    [user_id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [name] => admin
+    [username] => admin
+    [email] => admin@example.com
+    [role_id] => 7119b17b-1aa6-11f0-99a1-cc28aa53b74d
+    [last_activity] => 1745831229
+    [permissions] => Array
+        (
+            [0] => view_dashboard
+            [1] => manage_users
+            [2] => manage_roles
+            [3] => view_employees
+            [4] => manage_employees
+            [5] => view_education
+            [6] => manage_education
+            [7] => view_posts
+            [8] => manage_posts
+            [9] => generate_reports
+        )
+
+    [error] => Shop ID is required
+)
+
+[30-Apr-2025 13:03:19 UTC] Session valid for user: admin
+[30-Apr-2025 13:03:19 UTC] Monthly-sales.php - Successfully fetched 9 open months
+[30-Apr-2025 13:03:19 UTC] Monthly-sales.php - Successfully fetched 79 shops
+[30-Apr-2025 13:03:19 UTC] Monthly-sales.php - Successfully fetched 2 bonus tiers
+[30-Apr-2025 13:03:19 UTC] Monthly-sales.php - Executing shop sales query with params: {":default_month":4,":default_year":2025,":selected_month":4,":selected_year":2025}
+[30-Apr-2025 13:03:19 UTC] Monthly-sales.php - Successfully fetched 79 shop sales records
+[03-May-2025 09:20:44 UTC] Session check started. URI: /salarymanager/Admin/salary-report.php
+[03-May-2025 09:20:44 UTC] Session data: Array
+(
+    [lang] => en
+    [loggedin] => 1
+    [user_id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [name] => admin
+    [username] => admin
+    [email] => admin@example.com
+    [role_id] => 7119b17b-1aa6-11f0-99a1-cc28aa53b74d
+    [last_activity] => 1745831229
+    [permissions] => Array
+        (
+            [0] => view_dashboard
+            [1] => manage_users
+            [2] => manage_roles
+            [3] => view_employees
+            [4] => manage_employees
+            [5] => view_education
+            [6] => manage_education
+            [7] => view_posts
+            [8] => manage_posts
+            [9] => generate_reports
+        )
+
+    [error] => Shop ID is required
+)
+
+[03-May-2025 09:20:44 UTC] Session valid for user: admin
+[03-May-2025 09:21:36 UTC] Session check started. URI: /salarymanager/Admin/salary-report.php
+[03-May-2025 09:21:36 UTC] Session data: Array
+(
+    [lang] => en
+    [loggedin] => 1
+    [user_id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [name] => admin
+    [username] => admin
+    [email] => admin@example.com
+    [role_id] => 7119b17b-1aa6-11f0-99a1-cc28aa53b74d
+    [last_activity] => 1745831229
+    [permissions] => Array
+        (
+            [0] => view_dashboard
+            [1] => manage_users
+            [2] => manage_roles
+            [3] => view_employees
+            [4] => manage_employees
+            [5] => view_education
+            [6] => manage_education
+            [7] => view_posts
+            [8] => manage_posts
+            [9] => generate_reports
+        )
+
+    [error] => Shop ID is required
+)
+
+[03-May-2025 09:21:36 UTC] Session valid for user: admin
+[03-May-2025 09:21:56 UTC] Session check started. URI: /salarymanager/Admin/salary-report.php
+[03-May-2025 09:21:56 UTC] Session invalid, redirecting to login page. Current page: salary-report.php
+[03-May-2025 09:25:37 UTC] Session check started. URI: /salarymanager/Admin/salary-report.php
+[03-May-2025 09:25:37 UTC] Session data: Array
+(
+    [lang] => en
+    [loggedin] => 1
+    [user_id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [name] => admin
+    [username] => admin
+    [email] => admin@example.com
+    [role_id] => 7119b17b-1aa6-11f0-99a1-cc28aa53b74d
+    [last_activity] => 1745831229
+    [permissions] => Array
+        (
+            [0] => view_dashboard
+            [1] => manage_users
+            [2] => manage_roles
+            [3] => view_employees
+            [4] => manage_employees
+            [5] => view_education
+            [6] => manage_education
+            [7] => view_posts
+            [8] => manage_posts
+            [9] => generate_reports
+        )
+
+    [error] => Shop ID is required
+)
+
+[03-May-2025 09:25:37 UTC] Session valid for user: admin
+[03-May-2025 09:25:54 UTC] Session check started. URI: /salarymanager/Admin/salary-report.php
+[03-May-2025 09:25:54 UTC] Session data: Array
+(
+    [lang] => en
+    [loggedin] => 1
+    [user_id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [name] => admin
+    [username] => admin
+    [email] => admin@example.com
+    [role_id] => 7119b17b-1aa6-11f0-99a1-cc28aa53b74d
+    [last_activity] => 1745831229
+    [permissions] => Array
+        (
+            [0] => view_dashboard
+            [1] => manage_users
+            [2] => manage_roles
+            [3] => view_employees
+            [4] => manage_employees
+            [5] => view_education
+            [6] => manage_education
+            [7] => view_posts
+            [8] => manage_posts
+            [9] => generate_reports
+        )
+
+    [error] => Shop ID is required
+)
+
+[03-May-2025 09:25:54 UTC] Session valid for user: admin
+[03-May-2025 09:29:51 UTC] Session check started. URI: /salarymanager/Admin/salary-report.php
+[03-May-2025 09:29:51 UTC] Session data: Array
+(
+    [lang] => en
+    [loggedin] => 1
+    [user_id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [name] => admin
+    [username] => admin
+    [email] => admin@example.com
+    [role_id] => 7119b17b-1aa6-11f0-99a1-cc28aa53b74d
+    [last_activity] => 1745831229
+    [permissions] => Array
+        (
+            [0] => view_dashboard
+            [1] => manage_users
+            [2] => manage_roles
+            [3] => view_employees
+            [4] => manage_employees
+            [5] => view_education
+            [6] => manage_education
+            [7] => view_posts
+            [8] => manage_posts
+            [9] => generate_reports
+        )
+
+    [error] => Shop ID is required
+)
+
+[03-May-2025 09:29:51 UTC] Session valid for user: admin
+[03-May-2025 09:35:18 UTC] Session check started. URI: /salarymanager/Admin/salary-report.php
+[03-May-2025 09:35:18 UTC] Session data: Array
+(
+    [lang] => en
+    [loggedin] => 1
+    [user_id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [id] => 11db44e5-1aaa-11f0-99a1-cc28aa53b74d
+    [name] => admin
+    [username] => admin
+    [email] => admin@example.com
+    [role_id] => 7119b17b-1aa6-11f0-99a1-cc28aa53b74d
+    [last_activity] => 1745831229
+    [permissions] => Array
+        (
+            [0] => view_dashboard
+            [1] => manage_users
+            [2] => manage_roles
+            [3] => view_employees
+            [4] => manage_employees
+            [5] => view_education
+            [6] => manage_education
+            [7] => view_posts
+            [8] => manage_posts
+            [9] => generate_reports
+        )
+
+    [error] => Shop ID is required
+)
+
+[03-May-2025 09:35:18 UTC] Session valid for user: admin
